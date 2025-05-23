@@ -1,5 +1,5 @@
 # CAMINO-Benchmark
-To reproduce the results of the benchmark in our paper, download the nl files here: https://www.minlplib.org/minlplib_nl.zip\
+To reproduce the results of the benchmark in our paper, download the nl files here: https://www.minlplib.org/minlplib_nl.zip \
 See the list of problem instances at the bottom.
 
 **Requirements**:
@@ -71,14 +71,14 @@ Computations run on a single thread, with time limit set to 5 minutes.\
 These results correspond to the one found in the folder `results/05_14_results`.
 #### Convex instances
 <p float="left">
-  <img src="results/05_14_results/05-23_cvx_obj_profile.png" width="450" />
-  <img src="results/05_14_results/05-23_cvx_calc_time_profile.png" width="450" />
+  <img src="results/05_14_results/05-23_cvx_obj_profile.png" width="400" />
+  <img src="results/05_14_results/05-23_cvx_calc_time_profile.png" width="400" />
 </p>
 
 #### Nonconvex instances
 <p float="left">
-  <img src="results/05_14_results/05-23_noncvx_obj_profile.png" width="450" />
-  <img src="results/05_14_results/05-23_noncvx_calc_time_profile.png" width="450" />
+  <img src="results/05_14_results/05-23_noncvx_obj_profile.png" width="400" />
+  <img src="results/05_14_results/05-23_noncvx_calc_time_profile.png" width="400" />
 </p>
 
 ---
