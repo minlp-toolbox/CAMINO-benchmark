@@ -1,0 +1,344 @@
+<osrl xmlns="os.optimizationservices.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schemaLocation="os.optimizationservices.org http://www.optimizationservices.org/schemas/2.0/OSrL.xsd">
+    <general>
+        <otherResults numberOfOtherResults="1">
+            <other name="UsedOptions">Dual.CutStrategy = 0
+Dual.ESH.InteriorPoint.CuttingPlane.ConstraintSelectionFactor = 0.25
+Dual.ESH.InteriorPoint.CuttingPlane.IterationLimit = 100
+Dual.ESH.InteriorPoint.CuttingPlane.IterationLimitSubsolver = 100
+Dual.ESH.InteriorPoint.CuttingPlane.Reuse = false
+Dual.ESH.InteriorPoint.CuttingPlane.TerminationToleranceAbs = 1
+Dual.ESH.InteriorPoint.CuttingPlane.TerminationToleranceRel = 1
+Dual.ESH.InteriorPoint.CuttingPlane.TimeLimit = 10
+Dual.ESH.InteriorPoint.MinimaxObjectiveLowerBound = -1000000000000
+Dual.ESH.InteriorPoint.MinimaxObjectiveUpperBound = 0.1
+Dual.ESH.InteriorPoint.UsePrimalSolution = 1
+Dual.ESH.Rootsearch.ConstraintTolerance = 1e-08
+Dual.ESH.Rootsearch.UniqueConstraints = false
+Dual.ESH.Rootsearch.UseMaxFunction = false
+Dual.HyperplaneCuts.ConstraintSelectionFactor = 0.5
+Dual.HyperplaneCuts.Delay = true
+Dual.HyperplaneCuts.MaxConstraintFactor = 0.1
+Dual.HyperplaneCuts.MaxPerIteration = 200
+Dual.HyperplaneCuts.ObjectiveRootSearch = 1
+Dual.HyperplaneCuts.SaveHyperplanePoints = false
+Dual.HyperplaneCuts.UseIntegerCuts = false
+Dual.MIP.CutOff.InitialValue = 1.7976931348623157e+308
+Dual.MIP.CutOff.Tolerance = 1e-05
+Dual.MIP.CutOff.UseInitialValue = false
+Dual.MIP.InfeasibilityRepair.IntegerCuts = true
+Dual.MIP.InfeasibilityRepair.IterationLimit = 100
+Dual.MIP.InfeasibilityRepair.TimeLimit = 10
+Dual.MIP.InfeasibilityRepair.Use = true
+Dual.MIP.NodeLimit = 1.7976931348623157e+308
+Dual.MIP.NumberOfThreads = 1
+Dual.MIP.OptimalityTolerance = 1e-06
+Dual.MIP.Presolve.Frequency = 1
+Dual.MIP.Presolve.RemoveRedundantConstraints = false
+Dual.MIP.Presolve.UpdateObtainedBounds = true
+Dual.MIP.SolutionLimit.ForceOptimal.Iteration = 10000
+Dual.MIP.SolutionLimit.ForceOptimal.Time = 1000
+Dual.MIP.SolutionLimit.IncreaseIterations = 50
+Dual.MIP.SolutionLimit.Initial = 1
+Dual.MIP.SolutionLimit.UpdateTolerance = 0.001
+Dual.MIP.SolutionPool.Capacity = 100
+Dual.MIP.Solver = 1
+Dual.MIP.UpdateObjectiveBounds = false
+Dual.ReductionCut.MaxIterations = 20
+Dual.ReductionCut.ReductionFactor = 0.001
+Dual.ReductionCut.Strategy = 0
+Dual.ReductionCut.Use = true
+Dual.Relaxation.Frequency = 0
+Dual.Relaxation.IterationLimit = 200
+Dual.Relaxation.MaxLazyConstraints = 0
+Dual.Relaxation.TerminationTolerance = 0.5
+Dual.Relaxation.TimeLimit = 30
+Dual.Relaxation.Use = true
+Dual.TreeStrategy = 1
+Model.BoundTightening.FeasibilityBased.MaxIterations = 5
+Model.BoundTightening.FeasibilityBased.TimeLimit = 2
+Model.BoundTightening.FeasibilityBased.Use = true
+Model.BoundTightening.FeasibilityBased.UseNonlinear = true
+Model.BoundTightening.InitialPOA.ConstraintTolerance = 0.1
+Model.BoundTightening.InitialPOA.CutStrategy = 1
+Model.BoundTightening.InitialPOA.IterationLimit = 50
+Model.BoundTightening.InitialPOA.ObjectiveConstraintTolerance = 0.001
+Model.BoundTightening.InitialPOA.ObjectiveGapAbsolute = 0.1
+Model.BoundTightening.InitialPOA.ObjectiveGapRelative = 0.1
+Model.BoundTightening.InitialPOA.StagnationConstraintTolerance = 0.01
+Model.BoundTightening.InitialPOA.StagnationIterationLimit = 5
+Model.BoundTightening.InitialPOA.TimeLimit = 5
+Model.BoundTightening.InitialPOA.Use = false
+Model.Convexity.AssumeConvex = false
+Model.Convexity.Quadratics.EigenValueTolerance = 1e-05
+Model.Reformulation.Bilinear.AddConvexEnvelope = false
+Model.Reformulation.Bilinear.IntegerFormulation = 1
+Model.Reformulation.Bilinear.IntegerFormulation.MaxDomain = 100
+Model.Reformulation.Constraint.PartitionNonlinearTerms = 1
+Model.Reformulation.Constraint.PartitionQuadraticTerms = 1
+Model.Reformulation.Monomials.Extract = true
+Model.Reformulation.Monomials.Formulation = 1
+Model.Reformulation.ObjectiveFunction.Epigraph.Use = false
+Model.Reformulation.ObjectiveFunction.PartitionNonlinearTerms = 1
+Model.Reformulation.ObjectiveFunction.PartitionQuadraticTerms = 1
+Model.Reformulation.Quadratics.EigenValueDecomposition.Formulation = 0
+Model.Reformulation.Quadratics.EigenValueDecomposition.Tolerance = 1e-06
+Model.Reformulation.Quadratics.EigenValueDecomposition.Use = false
+Model.Reformulation.Quadratics.ExtractStrategy = 1
+Model.Reformulation.Quadratics.Strategy = 2
+Model.Reformulation.Signomials.Extract = true
+Model.Variables.Continuous.MaximumUpperBound = 1e+20
+Model.Variables.Continuous.MinimumLowerBound = -1e+20
+Model.Variables.Integer.MaximumUpperBound = 2000000000
+Model.Variables.Integer.MinimumLowerBound = -2000000000
+Model.Variables.NonlinearObjectiveVariable.Bound = 1000000000000
+Output.Console.DualSolver.Show = false
+Output.Console.Iteration.Detail = 1
+Output.Console.LogLevel = 2
+Output.Console.PrimalSolver.Show = false
+Output.Debug.Enable = false
+Output.Debug.Path = 
+Output.File.LogLevel = 2
+Output.GAMS.AlternateSolutionsFile = 
+Output.OutputDirectory = 1
+Output.SaveNumberOfSolutions = 1
+Primal.FixedInteger.CallStrategy = 2
+Primal.FixedInteger.CreateInfeasibilityCut = false
+Primal.FixedInteger.DualPointGap.Relative = 0.001
+Primal.FixedInteger.Frequency.Dynamic = true
+Primal.FixedInteger.Frequency.Iteration = 10
+Primal.FixedInteger.Frequency.Time = 5
+Primal.FixedInteger.IterationLimit = 10000000
+Primal.FixedInteger.OnlyUniqueIntegerCombinations = true
+Primal.FixedInteger.Solver = 0
+Primal.FixedInteger.Source = 3
+Primal.FixedInteger.SourceProblem = 0
+Primal.FixedInteger.TimeLimit = 10
+Primal.FixedInteger.Use = true
+Primal.FixedInteger.Warmstart = true
+Primal.Rootsearch.Use = true
+Primal.Tolerance.Integer = 1e-05
+Primal.Tolerance.LinearConstraint = 1e-06
+Primal.Tolerance.NonlinearConstraint = 1e-05
+Primal.Tolerance.TrustLinearConstraintValues = true
+Strategy.UseRecommendedSettings = true
+Subsolver.Gurobi.Heuristics = 0.05
+Subsolver.Gurobi.MIPFocus = 0
+Subsolver.Gurobi.NumericFocus = 1
+Subsolver.Gurobi.PoolSearchMode = 0
+Subsolver.Gurobi.PoolSolutions = 10
+Subsolver.Gurobi.ScaleFlag = -1
+Subsolver.Ipopt.ConstraintViolationTolerance = 1e-08
+Subsolver.Ipopt.LinearSolver = 1
+Subsolver.Ipopt.MaxIterations = 1000
+Subsolver.Ipopt.RelativeConvergenceTolerance = 1e-08
+Subsolver.Rootsearch.ActiveConstraintTolerance = 0
+Subsolver.Rootsearch.MaxIterations = 100
+Subsolver.Rootsearch.Method = 0
+Subsolver.Rootsearch.TerminationTolerance = 1e-16
+Subsolver.SHOT.ReuseHyperplanes.Fraction = 0.1
+Subsolver.SHOT.ReuseHyperplanes.Use = true
+Subsolver.SHOT.UseFBBT = true
+Termination.ConstraintTolerance = 1e-08
+Termination.DualStagnation.ConstraintTolerance = 1e-06
+Termination.DualStagnation.IterationLimit = 2147483647
+Termination.IterationLimit = 200000
+Termination.ObjectiveConstraintTolerance = 1e-08
+Termination.ObjectiveGap.Absolute = 0.01
+Termination.ObjectiveGap.Relative = 0.01
+Termination.PrimalStagnation.IterationLimit = 50
+Termination.TimeLimit = 300
+</other>
+            <other name="DualObjectiveBound" value="61.596102792281208" description="The dual bound for the objective"/>
+            <other name="PrimalObjectiveBound" value="64.498061758129978" description="The primal bound for the objective"/>
+            <other name="MaxConstraintError" value="11.659122012376589" description="The maximal constraint error"/>
+            <other name="AbsoluteOptimalityGap" value="2.9019589658487703" description="The absolute optimality gap"/>
+            <other name="RelativeOptimalityGap" value="0.044992963923888442" description="The relative optimality gap"/>
+            <other name="NumberOfLPProblems" value="16" description="The number of LP problems solved in the dual strategy"/>
+            <other name="NumberOfQPProblems" value="0" description="The number of QP problems solved in the dual strategy"/>
+            <other name="NumberOfFeasibleMILPProblems" value="1" description="The number of MILP problems solved to feasibility in the dual strategy"/>
+            <other name="NumberOfFeasibleMIQPProblems" value="0" description="The number of MIQP problems solved to feasibility in the dual strategy"/>
+            <other name="NumberOfOptimalMILPProblems" value="105" description="The number of MILP problems solved to optimality in the dual strategy"/>
+            <other name="NumberOfOptimalMIQPProblems" value="0" description="The number of MIQP problems solved to optimality in the dual strategy"/>
+            <other name="TotalNumberOfDualProblems" value="122" description="The total number of problems solved in the dual strategy"/>
+            <other name="NumberOfNLPProblems" value="20" description="The number of NLP problems solved in the primal strategy"/>
+            <other name="NumberOfPrimalSolutionsFound" value="4" description="The number of primal solutions found"/>
+            <other name="NumberOfSuccesfulInfeasibilityRepairsPerformed" value="0" description="The number of sucessful infeasibility repairs performed for nonconvex problems"/>
+            <other name="NumberOfUnsuccesfulInfeasibilityRepairsPerformed" value="0" description="The number of unsucessful infeasibility repairs performed for nonconvex problems"/>
+            <other name="NumberOfReductionCutStepsPerformed" value="0" description="The number of reduction cut steps performed for nonconvex problems"/>
+            <other name="numberOfPrimalImprovementsAfterInfeasibilityRepair" value="0" description="The number of cases where the repairing of infeasibilities for nonconvex problems has directly resulted in improved primal solutions"/>
+            <other name="numberOfPrimalImprovementsAfterReductionCut" value="0" description="The number of cases where the primal reduction cut has directly resulted in improved primal solutions"/>
+            <other name="DualSolver" value="Gurobi 10.0" description="The dual solver used"/>
+            <other name="FixedNLPSolver" value="Gurobi 10.0" description="The dual solver used"/>
+            <other name="NumberOfPrimalSolutionsFoundNLPFixedIntegers" description="The number of primal solutions found by solving integer-fixed NLP problems" value="4"/>
+        </otherResults>
+        <solverInvoked>Supporting Hyperplane Optimization Toolkit, version 1.1.0</solverInvoked>
+        <instanceName>flay05m</instanceName>
+    </general>
+    <job>
+        <timingInformation numberOfTimes="16">
+            <time type="Total" unit="second" description="Total solution time">300.000344939</time>
+            <time type="ProblemInitialization" unit="second" description="- problem initialization">0.000435165</time>
+            <time type="ProblemReformulation" unit="second" description="- problem reformulation">0.00045877899999999998</time>
+            <time type="BoundTightening" unit="second" description="- bound tightening">0.00052315100000000002</time>
+            <time type="BoundTighteningPOA" unit="second" description="  - initial outer approximation">0</time>
+            <time type="BoundTighteningFBBTOriginal" unit="second" description="  - feasibility based (original problem)">0.00026160499999999999</time>
+            <time type="BoundTighteningFBBTReformulated" unit="second" description="  - feasibility based (reformulated problem)">0.00024586900000000001</time>
+            <time type="InteriorPointSearch" unit="second" description="- interior point search">0.0060182080000000162</time>
+            <time type="DualProblemsRelaxed" unit="second" description="  - solving relaxed problems">0.0063242840000000003</time>
+            <time type="DualStrategy" unit="second" description="- dual strategy">299.94148141799985</time>
+            <time type="DualProblemsDiscrete" unit="second" description="  - solving MIP problems">299.983174803</time>
+            <time type="DualCutGenerationRootSearch" unit="second" description="  - root search for constraint cuts">0.062357799000000012</time>
+            <time type="DualObjectiveRootSearch" unit="second" description="  - root search for objective cut">0</time>
+            <time type="PrimalStrategy" unit="second" description="- primal strategy">0.26226322600000007</time>
+            <time type="PrimalBoundStrategyNLP" unit="second" description="  - solving NLP problems">0.21012664699999981</time>
+            <time type="PrimalBoundStrategyRootSearch" unit="second" description="  - performing root searches">0.017521275000000027</time>
+        </timingInformation>
+    </job>
+    <optimization numberOfSolutions="1" numberOfVariables="62" numberOfConstraints="65" numberOfObjectives="1">
+        <solution>
+            <constraints>
+                <dualValues numberOfCon="65">
+                    <con idx="0" name="e12">0.000000</con>
+                    <con idx="1" name="e13">0.000000</con>
+                    <con idx="2" name="e14">0.000000</con>
+                    <con idx="3" name="e15">0.000000</con>
+                    <con idx="4" name="e16">0.000000</con>
+                    <con idx="5" name="e2">-6.821910</con>
+                    <con idx="6" name="e3">0.000000</con>
+                    <con idx="7" name="e4">0.000000</con>
+                    <con idx="8" name="e5">-9.302605</con>
+                    <con idx="9" name="e6">-11.473213</con>
+                    <con idx="10" name="e7">0.000000</con>
+                    <con idx="11" name="e8">-8.795190</con>
+                    <con idx="12" name="e9">0.000000</con>
+                    <con idx="13" name="e10">0.000000</con>
+                    <con idx="14" name="e11">0.000000</con>
+                    <con idx="15" name="e17">0.000000</con>
+                    <con idx="16" name="e18">0.000000</con>
+                    <con idx="17" name="e19">-64.348697</con>
+                    <con idx="18" name="e20">-59.697395</con>
+                    <con idx="19" name="e21">-72.178090</con>
+                    <con idx="20" name="e22">-67.526787</con>
+                    <con idx="21" name="e23">-62.875485</con>
+                    <con idx="22" name="e24">-77.526787</con>
+                    <con idx="23" name="e25">-72.875485</con>
+                    <con idx="24" name="e26">-57.178090</con>
+                    <con idx="25" name="e27">-69.697395</con>
+                    <con idx="26" name="e28">-79.697395</con>
+                    <con idx="27" name="e29">0.000000</con>
+                    <con idx="28" name="e30">-2.170608</con>
+                    <con idx="29" name="e31">-82.178090</con>
+                    <con idx="30" name="e32">-2.480695</con>
+                    <con idx="31" name="e33">-4.651302</con>
+                    <con idx="32" name="e34">-2.480695</con>
+                    <con idx="33" name="e35">-4.651302</con>
+                    <con idx="34" name="e36">0.000000</con>
+                    <con idx="35" name="e37">-52.875485</con>
+                    <con idx="36" name="e38">-60.204810</con>
+                    <con idx="37" name="e39">-52.875485</con>
+                    <con idx="38" name="e40">-52.875485</con>
+                    <con idx="39" name="e41">0.000000</con>
+                    <con idx="40" name="e42">-71.670675</con>
+                    <con idx="41" name="e43">-71.670675</con>
+                    <con idx="42" name="e44">-72.875485</con>
+                    <con idx="43" name="e45">-72.875485</con>
+                    <con idx="44" name="e46">-47.875485</con>
+                    <con idx="45" name="e47">-71.670675</con>
+                    <con idx="46" name="e48">-72.875485</con>
+                    <con idx="47" name="e49">-47.875485</con>
+                    <con idx="48" name="e50">-87.875485</con>
+                    <con idx="49" name="e51">-72.875485</con>
+                    <con idx="50" name="e52">-47.875485</con>
+                    <con idx="51" name="e53">-87.875485</con>
+                    <con idx="52" name="e54">-55.204810</con>
+                    <con idx="53" name="e55">-95.204810</con>
+                    <con idx="54" name="e56">-87.875485</con>
+                    <con idx="55" name="e57">0.000000</con>
+                    <con idx="56" name="e58">0.000000</con>
+                    <con idx="57" name="e59">0.000000</con>
+                    <con idx="58" name="e60">0.000000</con>
+                    <con idx="59" name="e61">0.000000</con>
+                    <con idx="60" name="e62">0.000000</con>
+                    <con idx="61" name="e63">0.000000</con>
+                    <con idx="62" name="e64">0.000000</con>
+                    <con idx="63" name="e65">0.000000</con>
+                    <con idx="64" name="e66">0.000000</con>
+                </dualValues>
+            </constraints>
+            <variables>
+                <values numberOfVar="62">
+                    <var idx="0" name="x16">16.124515</var>
+                    <var idx="1" name="x17">7.329325</var>
+                    <var idx="2" name="x18">8.795190</var>
+                    <var idx="3" name="x19">16.124515</var>
+                    <var idx="4" name="x20">16.124515</var>
+                    <var idx="5" name="x1">6.821910</var>
+                    <var idx="6" name="x2">9.302605</var>
+                    <var idx="7" name="x3">9.302605</var>
+                    <var idx="8" name="x4">4.651303</var>
+                    <var idx="9" name="x5">0.000000</var>
+                    <var idx="10" name="x6">0.000000</var>
+                    <var idx="11" name="x7">0.000000</var>
+                    <var idx="12" name="x8">7.329325</var>
+                    <var idx="13" name="x9">0.000000</var>
+                    <var idx="14" name="x10">0.000000</var>
+                    <var idx="15" name="x11">2.480695</var>
+                    <var idx="16" name="x12">6.821910</var>
+                    <var idx="17" name="x13">6.821910</var>
+                    <var idx="18" name="x14">2.170608</var>
+                    <var idx="19" name="x15">4.651303</var>
+                    <var idx="20" name="x21">16.124515</var>
+                    <var idx="21" name="x22">16.124515</var>
+                    <var idx="22" name="b23">1.000000</var>
+                    <var idx="23" name="b24">1.000000</var>
+                    <var idx="24" name="b25">0.000000</var>
+                    <var idx="25" name="b26">0.000000</var>
+                    <var idx="26" name="b27">0.000000</var>
+                    <var idx="27" name="b28">0.000000</var>
+                    <var idx="28" name="b29">0.000000</var>
+                    <var idx="29" name="b30">0.000000</var>
+                    <var idx="30" name="b31">0.000000</var>
+                    <var idx="31" name="b32">0.000000</var>
+                    <var idx="32" name="b33">0.000000</var>
+                    <var idx="33" name="b34">0.000000</var>
+                    <var idx="34" name="b35">1.000000</var>
+                    <var idx="35" name="b36">1.000000</var>
+                    <var idx="36" name="b37">0.000000</var>
+                    <var idx="37" name="b38">1.000000</var>
+                    <var idx="38" name="b39">1.000000</var>
+                    <var idx="39" name="b40">1.000000</var>
+                    <var idx="40" name="b41">1.000000</var>
+                    <var idx="41" name="b42">1.000000</var>
+                    <var idx="42" name="b43">0.000000</var>
+                    <var idx="43" name="b44">0.000000</var>
+                    <var idx="44" name="b45">0.000000</var>
+                    <var idx="45" name="b46">0.000000</var>
+                    <var idx="46" name="b47">1.000000</var>
+                    <var idx="47" name="b48">0.000000</var>
+                    <var idx="48" name="b49">0.000000</var>
+                    <var idx="49" name="b50">0.000000</var>
+                    <var idx="50" name="b51">0.000000</var>
+                    <var idx="51" name="b52">0.000000</var>
+                    <var idx="52" name="b53">0.000000</var>
+                    <var idx="53" name="b54">0.000000</var>
+                    <var idx="54" name="b55">0.000000</var>
+                    <var idx="55" name="b56">0.000000</var>
+                    <var idx="56" name="b57">0.000000</var>
+                    <var idx="57" name="b58">0.000000</var>
+                    <var idx="58" name="b59">0.000000</var>
+                    <var idx="59" name="b60">0.000000</var>
+                    <var idx="60" name="b61">0.000000</var>
+                    <var idx="61" name="b62">0.000000</var>
+                </values>
+            </variables>
+            <objectives>
+                <values numberOfObj="1">
+                    <obj idx="-1">64.498062</obj>
+                </values>
+            </objectives>
+            <status type="feasible" description="Feasible solution found" numberOfSubstatuses="1">
+                <substatus type="other" description="Terminated since time limit was reached."/>
+            </status>
+        </solution>
+    </optimization>
+</osrl>
