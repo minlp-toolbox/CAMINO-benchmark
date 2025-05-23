@@ -8,7 +8,7 @@ Set up a new Python environment, clone the repository and install it.
 ```
 git clone git@github.com:minlp-toolbox/CAMINO-benchmark.git
 cd CAMINO-benchmark
-virtualenv env --python=python3
+python -m venv env
 source env/bin/activate
 pip install .
 ```
