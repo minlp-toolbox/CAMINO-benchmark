@@ -4,7 +4,7 @@ See the list of problem instances at the bottom.
 
 ## Quickly reproduce the results in the preprint
 
-Set up a new Python environment, clone the repository and install it.
+Set up a new Python environment (**Python version >= 3.9.1**), clone the repository and install it.
 ```
 git clone git@github.com:minlp-toolbox/CAMINO-benchmark.git
 cd CAMINO-benchmark
