@@ -88,3 +88,7 @@ python create_plot.py <data_file.csv> <key: 'cvx', 'noncvx'>
 ```
 
 ---
+## TODO WIM
+
+Create 4 tables -> Add * when calculation time reaches limit
+Cleanup tables and explain columns
