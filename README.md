@@ -29,17 +29,17 @@ python benchmark/create_plot.py <path_to_save_results>/noncvx.csv noncvx
 ### Results
 On our machine (with Intel(R) Xeon(R) W-2225 CPU @ 4.10GHz and 16GB of memory), we have obtained the following performance profiles.
 Computations run on a single thread, with time limit set to 5 minutes.\
-These results correspond to the one found in the folder `results/05_14_results`.
+These results correspond to the one found in the folder `results/06_04_results`.
 #### Convex instances
 <p float="left">
-  <img src="results/05_14_results/05-30_cvx_obj_profile.png" width="400" />
-  <img src="results/05_14_results/05-30_cvx_calc_time_profile.png" width="400" />
+  <img src="results/06_04_results/06-05_cvx_obj_profile.png" width="400" />
+  <img src="results/06_04_results/06-05_cvx_calc_time_profile.png" width="400" />
 </p>
 
 #### Nonconvex instances
 <p float="left">
-  <img src="results/05_14_results/05-30_noncvx_obj_profile.png" width="400" />
-  <img src="results/05_14_results/05-30_noncvx_calc_time_profile.png" width="400" />
+  <img src="results/06_04_results/06-05_noncvx_obj_profile.png" width="400" />
+  <img src="results/06_04_results/06-05_noncvx_calc_time_profile.png" width="400" />
 </p>
 
 ## Problem instances

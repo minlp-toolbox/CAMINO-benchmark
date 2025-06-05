@@ -7,3 +7,4 @@
 .python-version
 **/SHOT.log
 **/*.egg-info
+env
