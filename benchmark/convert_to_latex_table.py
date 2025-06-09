@@ -1,6 +1,6 @@
 import csv
 from sys import argv
-from math import isinf, nan
+from math import isinf
 
 TIME_LIMIT = 300
 
@@ -19,8 +19,9 @@ solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
 
 
 print("Objective")
+print("\\begin{small}")
 print("\\begin{center}")
-print("\\begin{tabular}{l" + " r " * 5 + "} ")
+print("\\begin{tabular}{@{} l @{} | @{} " + " r " * 5 + " @{} } ")
 print("\\toprule")
 print(" & ".join(["Name", "Reference"] + solver_names) + " \\\\")
 print("\\midrule")
@@ -33,15 +34,14 @@ with open(argv[1], newline='') as csvfile:
                 calc_time = float(row[calc_key])
                 value = float(row[key])
                 if isinf(value):
-                    value = nan
-
-                if calc_time > TIME_LIMIT:
+                    items.append("NaN")
+                elif calc_time > TIME_LIMIT:
                     items.append("$%.3e$*" % value)
                 else:
                     items.append("$%.3e$" % value)
             except Exception:
                 if len(row[key]) > 20:
-                    items.append("NAN")
+                    items.append("NaN")
                 else:
                     items.append(row[key])
 
@@ -49,10 +49,12 @@ with open(argv[1], newline='') as csvfile:
 print("\\bottomrule")
 print("\\end{tabular}")
 print("\\end{center}")
+print("\\end{small}")
 
 print("Time")
+print("\\begin{small}")
 print("\\begin{center}")
-print("\\begin{tabular}{l" + " r " * 4 + "} ")
+print("\\begin{tabular}{@{} l | " + " r " * 4 + " @{} }")
 print("\\toprule")
 print(" & ".join(["Name"] + solver_names) + " \\\\")
 print("\\midrule")
@@ -61,14 +63,18 @@ with open(argv[1], newline='') as csvfile:
     for row in reader:
         items = [row['name'].replace("_", "\\_")]
         for key, calc_key in zip(solvers_obj, solvers_calctime):
-            try:
-                items.append("$%.3f$" % float(row[calc_key]))
-            except Exception:
-                if len(row[calc_key]) > 20:
-                    items.append("NAN")
-                else:
-                    items.append(row[calc_key])
+            if row[calc_key] == 'NAN':
+                items.append("NaN")
+            else:
+                try:
+                    items.append("$%.3f$" % float(row[calc_key]))
+                except Exception:
+                    if len(row[calc_key]) > 20:
+                        items.append("NaN")
+                    else:
+                        items.append(row[calc_key])
         print(" & ".join(items) + " \\\\")
 print("\\bottomrule")
 print("\\end{tabular}")
 print("\\end{center}")
+print("\\end{small}")
