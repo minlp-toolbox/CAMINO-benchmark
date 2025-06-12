@@ -86,5 +86,3 @@ Usage:
 ```
 python create_plot.py <data_file.csv> <key: 'cvx', 'noncvx'>
 ```
-
----
