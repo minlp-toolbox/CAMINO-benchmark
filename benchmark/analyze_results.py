@@ -75,3 +75,8 @@ print(f"\nInstances where sbmilp is faster than sbmiqp : {df_mask3['name'].tolis
 mask4 = (total_time_df["sbmilp"] < total_time_df["sbmiqp"]) & (total_time_df["sbmilp"] < total_time_df["shot"])
 df_mask4 = total_time_df[mask4]
 print(f"\nInstances where sbmilp is faster than shot & sbmiqp : {df_mask4['name'].tolist()}")
+
+mask5 = (total_time_df["shot"] > 5) & (total_time_df["shot"] < 299) & (total_time_df["shot"] < total_time_df["sbmiqp"]) & (total_time_df["sbmiqp"] / total_time_df["shot"] > 0.5)
+df_mask5 = total_time_df[mask5]
+print(f"\nInstances where shot is faster of sbmiqp (at least >50%) : {df_mask5['name'].tolist()}")
+
