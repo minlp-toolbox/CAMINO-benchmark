@@ -267,15 +267,36 @@ assert (key == "cvx" or key == "noncvx")
 total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
 
 
+# =================== standard comparison ===================
 # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
 # solver_names = ["SHOT", "S-B-MIQP"]
-solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
-solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
+
+# solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
+# solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
+
+# =================== v0.1.4 - v.0.1.5 comparison ===================
+# solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
+# solver_names = ["SHOT", "S-B-MIQP", "S-B-MIQP-new", "S-B-MIQP-ee", "S-B-MIQP-ee-new",]
+
+# solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee_new",]
+# solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP-ee-new",]
+
+# =================== amplpy comparison ===================
+# solvers = [f"{key}_shot", f"{key}_sbmiqp", f"{key}_bonmin", f"{key}_scip", f"{key}_gurobi"]
+# solver_names = ["SHOT", "S-B-MIQP", "Bonmin", "SCIP", "Gurobi"]
+
+# =================== alpha comparison ===================
+solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
+solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
+
+# =================== rho comparison ===================
+# solvers = [f"{key}_sbmiqp_ee_rho_1", f"{key}_sbmiqp_ee_rho_1_5", f"{key}_sbmiqp_ee_rho_5", f"{key}_sbmiqp_ee_rho_10", f"{key}_sbmiqp_ee_rho_50",]
+# solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
+# ========================== END ==========================
+
+
 solvers_obj = [f"{solver}.obj" for solver in solvers]
-solvers_calctime = [
-    solver + ".calc_time" if "shot" not in solver else f"{solver}.calctime"
-    for solver in solvers
-]
+solvers_calctime = [solver + ".calc_time" for solver in solvers]
 
 data[solvers_calctime] = data[solvers_calctime].map(to_float)
 data[solvers_obj] = data[solvers_obj].map(to_float)
@@ -283,8 +304,7 @@ data['min.calctime'] = np.min(data[solvers_calctime], axis=1)
 data.set_index("name", inplace=True)
 for solver in solvers:
     if "shot" in solver:
-        data[f'{solver}.calctime'][data[f'{solver}.obj'] == np.inf] = np.inf
-
+        data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
 
 # New plots:
 create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile', title="Wall time", legend_labels=solver_names)
