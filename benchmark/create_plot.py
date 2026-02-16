@@ -271,8 +271,8 @@ total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
 # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
 # solver_names = ["SHOT", "S-B-MIQP"]
 
-# solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
-# solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
+solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
+solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
 
 # =================== v0.1.4 - v.0.1.5 comparison ===================
 # solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
@@ -286,8 +286,8 @@ total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
 # solver_names = ["SHOT", "S-B-MIQP", "Bonmin", "SCIP", "Gurobi"]
 
 # =================== alpha comparison ===================
-solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
-solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
+# solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
+# solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
 
 # =================== rho comparison ===================
 # solvers = [f"{key}_sbmiqp_ee_rho_1", f"{key}_sbmiqp_ee_rho_1_5", f"{key}_sbmiqp_ee_rho_5", f"{key}_sbmiqp_ee_rho_10", f"{key}_sbmiqp_ee_rho_50",]
