@@ -264,7 +264,7 @@ if __name__ == "__main__":
     SAVE_DIRECTORY = os.path.dirname(argv[1])
     key = argv[2]
     assert (key == "cvx" or key == "noncvx")
-    total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
+    total_entries = data.shape[0]
 
 
     # =================== standard comparison ===================
@@ -296,7 +296,7 @@ if __name__ == "__main__":
     # solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
 
     # =================== rho comparison ===================
-    # solvers = [f"{key}_sbmiqp_ee_rho_1", f"{key}_sbmiqp_ee_rho_1_5", f"{key}_sbmiqp_ee_rho_5", f"{key}_sbmiqp_ee_rho_10", f"{key}_sbmiqp_ee_rho_50",]
+    # solvers = [f"{key}_sbmiqp_rho_1", f"{key}_sbmiqp_rho_1_5", f"{key}_sbmiqp_rho_5", f"{key}_sbmiqp_rho_10", f"{key}_sbmiqp_rho_50",]
     # solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
     # data = data.loc[data["name"].isin(NONCVX_INSTANCES_WITH_CUT_CORRECTION)]
 
