@@ -63,7 +63,6 @@ def latexify(fig_width=None, fig_height=None):
 
     matplotlib.rcParams.update(params)
 
-
 def compute_ratio(val_min, val_ref, corr=True):
     """Compute ratio."""
     ratios = []
@@ -82,7 +81,6 @@ def compute_ratio(val_min, val_ref, corr=True):
                 ratios.append(max(jval / imin, 1.0))
 
     return ratios
-
 
 def collect_bins_plot(values, name, style, color, min_val=None, max_val=None, ax=None):
     """Collect in bins."""
@@ -103,7 +101,6 @@ def collect_bins_plot(values, name, style, color, min_val=None, max_val=None, ax
         ax.plot(keys, values, style, color=color, label=name)
     else:
         plt.plot(keys, values, style, color=color, label=name)
-
 
 def to_float(val):
     """Convert to float."""
@@ -249,65 +246,78 @@ def create_performance_profile(df, solver_columns, problem_column=None, tau_max=
 
     ax.set_title(title)
     plt.tight_layout()
-    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.png", dpi=300)
+    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.pdf", dpi=300)
 
     return fig, ax
 
+NONCVX_INSTANCES_WITH_CUT_CORRECTION = ['batch0812_nc', 'batch_nc', 'csched2a', 'ex1233', 'ex1243', 'ex1244', 'ex1252', 'ex1252a', 'gear2', 'gear3', 'heatexch_spec2', 'nvs05', 'nvs21', 'parallel', 'spring', 'supplychainp1_020306', 'supplychainr1_020306', 'supplychainr1_030510', 'waterno2_02']
 
-if len(argv) != 3:
-    print("Usage: python create_plot.py <data_file.csv> <key>")
-    print("key: cvx or noncvx")
-    exit(1)
+if __name__ == "__main__":
 
-latexify(6, 4)
-data = pd.read_csv(argv[1])
-SAVE_DIRECTORY = os.path.dirname(argv[1])
-key = argv[2]
-assert (key == "cvx" or key == "noncvx")
-total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
+    if len(argv) != 3:
+        print("Usage: python create_plot.py <data_file.csv> <key>")
+        print("key: cvx or noncvx")
+        exit(1)
 
-
-# =================== standard comparison ===================
-# solvers = [f"{key}_shot", f"{key}_sbmiqp"]
-# solver_names = ["SHOT", "S-B-MIQP"]
-
-solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
-solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
-
-# =================== v0.1.4 - v.0.1.5 comparison ===================
-# solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
-# solver_names = ["SHOT", "S-B-MIQP", "S-B-MIQP-new", "S-B-MIQP-ee", "S-B-MIQP-ee-new",]
-
-# solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee_new",]
-# solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP-ee-new",]
-
-# =================== amplpy comparison ===================
-# solvers = [f"{key}_shot", f"{key}_sbmiqp", f"{key}_bonmin", f"{key}_scip", f"{key}_gurobi"]
-# solver_names = ["SHOT", "S-B-MIQP", "Bonmin", "SCIP", "Gurobi"]
-
-# =================== alpha comparison ===================
-# solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
-# solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
-
-# =================== rho comparison ===================
-# solvers = [f"{key}_sbmiqp_ee_rho_1", f"{key}_sbmiqp_ee_rho_1_5", f"{key}_sbmiqp_ee_rho_5", f"{key}_sbmiqp_ee_rho_10", f"{key}_sbmiqp_ee_rho_50",]
-# solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
-# ========================== END ==========================
+    latexify(6, 4)
+    data = pd.read_csv(argv[1])
+    SAVE_DIRECTORY = os.path.dirname(argv[1])
+    key = argv[2]
+    assert (key == "cvx" or key == "noncvx")
+    total_entries = data.shape[0]  # int(input("Amount (e.g. 120):"))
 
 
-solvers_obj = [f"{solver}.obj" for solver in solvers]
-solvers_calctime = [solver + ".calc_time" for solver in solvers]
+    # =================== standard comparison ===================
+    # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
+    # solver_names = ["SHOT", "S-B-MIQP"]
 
-data[solvers_calctime] = data[solvers_calctime].map(to_float)
-data[solvers_obj] = data[solvers_obj].map(to_float)
-data['min.calctime'] = np.min(data[solvers_calctime], axis=1)
-data.set_index("name", inplace=True)
-for solver in solvers:
-    if "shot" in solver:
-        data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
+    solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
+    solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
 
-# New plots:
-create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile', title="Wall time", legend_labels=solver_names)
-create_performance_profile(data, solvers_obj, log_scale=True, tau_max=1e5, name=f'{key}_obj_profile', title="Objective", legend_labels=solver_names)
+    # =================== v0.1.4 - v.0.1.5 comparison ===================
+    # solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
+    # solver_names = ["SHOT", "S-B-MIQP", "S-B-MIQP-new", "S-B-MIQP-ee", "S-B-MIQP-ee-new",]
 
-plt.show()
+    # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee_new",]
+    # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP-ee-new",]
+
+    # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
+    # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP",]
+
+    # solvers = [f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
+    # solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
+
+    # =================== amplpy comparison ===================
+    # solvers = [f"{key}_shot", f"{key}_sbmiqp", f"{key}_bonmin", f"{key}_scip", f"{key}_gurobi"]
+    # solver_names = ["SHOT", "S-B-MIQP", "Bonmin", "SCIP", "Gurobi"]
+
+    # =================== alpha comparison ===================
+    # solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
+    # solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
+
+    # =================== rho comparison ===================
+    # solvers = [f"{key}_sbmiqp_ee_rho_1", f"{key}_sbmiqp_ee_rho_1_5", f"{key}_sbmiqp_ee_rho_5", f"{key}_sbmiqp_ee_rho_10", f"{key}_sbmiqp_ee_rho_50",]
+    # solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
+    # data = data.loc[data["name"].isin(NONCVX_INSTANCES_WITH_CUT_CORRECTION)]
+
+    # ========================== END ==========================
+
+
+    solvers_obj = [f"{solver}.obj" for solver in solvers]
+    solvers_calctime = [solver + ".calc_time" for solver in solvers]
+    # solvers_calctime[1] = solvers[1] + ".solver_time"
+
+    data[solvers_calctime] = data[solvers_calctime].map(to_float)
+    data[solvers_obj] = data[solvers_obj].map(to_float)
+    data['min.calctime'] = np.min(data[solvers_calctime], axis=1)
+    data.set_index("name", inplace=True)
+    for solver in solvers:
+        if "shot" in solver:
+            data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
+    data[solvers_calctime + ["min.calctime"]] = data[solvers_calctime + ["min.calctime"]].clip(lower=0, upper=300)
+
+    # New plots:
+    create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile', title="Wall time", legend_labels=solver_names, log_scale=True)
+    create_performance_profile(data, solvers_obj, tau_max=1e5, name=f'{key}_obj_profile', title="Objective", legend_labels=solver_names, log_scale=True)
+
+    plt.show()
