@@ -250,7 +250,7 @@ def create_performance_profile(df, solver_columns, problem_column=None, tau_max=
 
     return fig, ax
 
-NONCVX_INSTANCES_WITH_CUT_CORRECTION = ['batch0812_nc', 'batch_nc', 'csched2a', 'ex1233', 'ex1243', 'ex1244', 'ex1252', 'ex1252a', 'gear2', 'gear3', 'heatexch_spec2', 'nvs05', 'nvs21', 'parallel', 'spring', 'supplychainp1_020306', 'supplychainr1_020306', 'supplychainr1_030510', 'waterno2_02']
+NONCVX_INSTANCES_WITH_CUT_CORRECTION = ['batch0812_nc', 'batch_nc', 'csched2a', 'ex1233', 'ex1243', 'ex1244', 'ex1252', 'ex1252a', 'gear2', 'gear3', 'heatexch_spec2', 'nvs05', 'nvs21', 'parallel', 'spring', 'supplychainp1_020306', 'supplychainr1_020306', 'supplychainr1_030510', 'wastepaper5', 'waterno2_02']
 
 if __name__ == "__main__":
 
