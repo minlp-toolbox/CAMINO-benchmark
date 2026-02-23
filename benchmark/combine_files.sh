@@ -8,18 +8,27 @@ mkdir -p $1
 
 python ./benchmark/to_csv.py $1/cvx_bonmin/overview.json $1/cvx_bonmin.csv
 python ./benchmark/to_csv.py $1/cvx_sbmiqp/overview.json $1/cvx_sbmiqp.csv
-# python ./benchmark/to_csv.py $1/cvx_gurobi/overview.json $1/cvx_gurobi.csv
-# python ./benchmark/to_csv.py $1/cvx_scip/overview.json $1/cvx_scip.csv
+python ./benchmark/to_csv.py $1/cvx_gurobi/overview.json $1/cvx_gurobi.csv
+python ./benchmark/to_csv.py $1/cvx_scip/overview.json $1/cvx_scip.csv
 python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee/overview.json $1/cvx_sbmiqp_ee.csv
 python ./benchmark/to_csv.py $1/noncvx_bonmin/overview.json $1/noncvx_bonmin.csv
 python ./benchmark/to_csv.py $1/noncvx_sbmiqp/overview.json $1/noncvx_sbmiqp.csv
+python ./benchmark/to_csv.py $1/noncvx_gurobi/overview.json $1/noncvx_gurobi.csv
+python ./benchmark/to_csv.py $1/noncvx_scip/overview.json $1/noncvx_scip.csv
 python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee/overview.json $1/noncvx_sbmiqp_ee.csv
 
 python ./benchmark/read_shot.py ./benchmark/convex_set.csv $1/cvx_shot $1/cvx_shot.csv
 python ./benchmark/read_shot.py ./benchmark/nonconvex_set.csv $1/noncvx_shot $1/noncvx_shot.csv
 
-python ./benchmark/join_data.py $1/cvx.csv ./benchmark/convex_set.csv $1/cvx_bonmin.csv $1/cvx_sbmiqp.csv $1/cvx_sbmiqp_ee.csv  $1/cvx_shot.csv # $1/cvx_gurobi.csv $1/cvx_scip.csv
-python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_bonmin.csv $1/noncvx_sbmiqp.csv $1/noncvx_sbmiqp_ee.csv $1/noncvx_shot.csv
+python ./benchmark/join_data.py $1/cvx.csv ./benchmark/convex_set.csv $1/cvx_bonmin.csv $1/cvx_sbmiqp.csv $1/cvx_sbmiqp_ee.csv  $1/cvx_shot.csv $1/cvx_gurobi.csv $1/cvx_scip.csv
+python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_bonmin.csv $1/noncvx_sbmiqp.csv $1/noncvx_sbmiqp_ee.csv $1/noncvx_shot.csv $1/noncvx_gurobi.csv $1/noncvx_scip.csv
+
+
+# ============================== Combine files for comparing sbmiqp versions ==============================
+# python ./benchmark/to_csv.py $1/cvx_sbmiqp/overview.json $1/cvx_sbmiqp.csv
+# python ./benchmark/to_csv.py $1/cvx_sbmiqp_new/overview.json $1/cvx_sbmiqp_new.csv
+python ./benchmark/join_data.py $1/cvx.csv ./benchmark/convex_set.csv $1/cvx_sbmiqp.csv $1/cvx_sbmiqp_new.csv $1/cvx_sbmiqp_ee.csv $1/cvx_sbmiqp_ee_new.csv
+python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp.csv $1/noncvx_sbmiqp_new.csv $1/noncvx_sbmiqp_ee.csv $1/noncvx_sbmiqp_ee_new.csv
 
 
 # ============================== Combine files for tuning alpha in sbmiqp ==============================
