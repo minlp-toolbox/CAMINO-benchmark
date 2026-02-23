@@ -242,11 +242,12 @@ def create_performance_profile(df, solver_columns, problem_column=None, tau_max=
     ax.set_yticks(np.linspace(0,1,6))
     # ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     # if title=="Objective":
-    ax.legend(ncols=2, columnspacing=0.7, handlelength=1.5)
+    ax.legend(ncols=2, columnspacing=0.5, handlelength=1.2)
 
     ax.set_title(title)
-    plt.tight_layout()
-    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.pdf", dpi=300)
+    fig.subplots_adjust(left=0.16, bottom=0.17, top=0.9)
+    # plt.tight_layout()
+    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.pdf", dpi=300, bbox_inches='tight', pad_inches=0.05,)
 
     return fig, ax
 
@@ -254,9 +255,10 @@ NONCVX_INSTANCES_WITH_CUT_CORRECTION = ['batch0812_nc', 'batch_nc', 'csched2a', 
 
 if __name__ == "__main__":
 
-    if len(argv) != 3:
-        print("Usage: python create_plot.py <data_file.csv> <key>")
+    if len(argv) != 4:
+        print("Usage: python create_plot.py <data_file.csv> <key> <solve_time>")
         print("key: cvx or noncvx")
+        print("solve_time: solvetime or totaltime")
         exit(1)
 
     latexify(6, 4)
@@ -265,14 +267,15 @@ if __name__ == "__main__":
     key = argv[2]
     assert (key == "cvx" or key == "noncvx")
     total_entries = data.shape[0]
-
+    solve_time = argv[3]
+    assert (solve_time == "solvetime" or solve_time == "totaltime")
 
     # =================== standard comparison ===================
     # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
     # solver_names = ["SHOT", "S-B-MIQP"]
 
-    solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
-    solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
+    # solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
+    # solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
 
     # =================== v0.1.4 - v.0.1.5 comparison ===================
     # solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
@@ -287,9 +290,12 @@ if __name__ == "__main__":
     # solvers = [f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
     # solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
 
+    # solvers = [f"{key}_sbmiqp_ee_new", f"{key}_sbmiqp_ee",]
+    # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
+
     # =================== amplpy comparison ===================
-    # solvers = [f"{key}_shot", f"{key}_sbmiqp", f"{key}_bonmin", f"{key}_scip", f"{key}_gurobi"]
-    # solver_names = ["SHOT", "S-B-MIQP", "Bonmin", "SCIP", "Gurobi"]
+    solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee", f"{key}_scip", f"{key}_gurobi"]
+    solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee", "SCIP", "Gurobi",]
 
     # =================== alpha comparison ===================
     # solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]
@@ -305,7 +311,9 @@ if __name__ == "__main__":
 
     solvers_obj = [f"{solver}.obj" for solver in solvers]
     solvers_calctime = [solver + ".calc_time" for solver in solvers]
-    # solvers_calctime[1] = solvers[1] + ".solver_time"
+    if solve_time == "solvetime":
+        solvers_calctime[2] = solvers[2] + ".solver_time"
+        solvers_calctime[3] = solvers[3] + ".solver_time"
 
     data[solvers_calctime] = data[solvers_calctime].map(to_float)
     data[solvers_obj] = data[solvers_obj].map(to_float)
@@ -314,10 +322,40 @@ if __name__ == "__main__":
     for solver in solvers:
         if "shot" in solver:
             data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
-    data[solvers_calctime + ["min.calctime"]] = data[solvers_calctime + ["min.calctime"]].clip(lower=0, upper=300)
+
+    # clipping to 300 preserving inf
+    cols = solvers_calctime + ["min.calctime"]
+    mask = (data[cols] > 300) & np.isfinite(data[cols])
+    data.loc[:, cols] = data[cols].mask(mask, 300)
+
+    def rel_gap(primal, obj, tol=1e-2):
+        with np.errstate(divide='ignore', invalid='ignore'):
+            g = (obj-primal) / np.abs(primal)
+        g[~np.isfinite(g)] = np.nan
+        if tol is not None:
+            tiny = np.abs(g) < tol
+            g[tiny] = 0.0
+        return g
+    for s, ct in zip(solvers, solvers_calctime):
+        mask = data[ct] == 300                     # rows where this solver timed out
+        gap  = rel_gap(data['primalbound'], data[f'{s}.obj'])
+        failed = data[ct] == np.inf
+        print(f'{s}: \t\t success {total_entries-failed.sum()-mask.sum():3d} | fail {failed.sum():2d} | time-out {mask.sum():3d} , gap <1e-1 {(gap[mask]<1e-1).sum():2d}')
+
+
+    # set to inf objective >1e8 <-1e8 and == 0 for gurobi and scip
+    if len(solvers_obj) == 6:
+        cols = solvers_obj[-2:]
+        mask = (data[cols].abs() > 1e8) | (data[cols] == 0)
+        data.loc[:, cols] = data[cols].mask(mask, np.inf)
+        cols_tmp = solvers_calctime[-2:]
+        mask1 = data[cols[0]] == np.inf
+        mask2 = data[cols[1]] == np.inf
+        data.loc[mask1, cols_tmp[0]] = np.inf
+        data.loc[mask2, cols_tmp[1]] = np.inf
 
     # New plots:
-    create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile', title="Wall time", legend_labels=solver_names, log_scale=True)
-    create_performance_profile(data, solvers_obj, tau_max=1e5, name=f'{key}_obj_profile', title="Objective", legend_labels=solver_names, log_scale=True)
+    create_performance_profile(data, solvers_calctime, tau_max=10, name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=False)
+    create_performance_profile(data, solvers_obj, tau_max=1.5, name=f'{key}_obj_profile_nsol{len(solver_names)}_{solve_time}', title="Objective", legend_labels=solver_names, log_scale=False)
 
     plt.show()
