@@ -1,3 +1,8 @@
+# This file is part of camino-benchmark
+# Copyright (C) 2025  Andrea Ghezzi, Wim Van Roy, Sebastian Sager, Moritz Diehl
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+
 import csv
 from sys import argv
 from math import isinf

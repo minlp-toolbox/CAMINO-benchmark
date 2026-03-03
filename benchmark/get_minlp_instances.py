@@ -1,3 +1,8 @@
+# This file is part of camino-benchmark
+# Copyright (C) 2026  Andrea Ghezzi, Wim Van Roy, Sebastian Sager, Moritz Diehl
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+
 import pandas as pd
 from sys import argv
 import os
