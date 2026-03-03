@@ -47,6 +47,10 @@ with open(csv_out, "w") as f:
     cf.writerow(headers)
     data_len = len(headers)
     for key, sdata in data.items():
+        if sdata[2] == "max":
+            if sdata[3] != "NAN":
+                sdata[3] = str(-float(sdata[3]))
+                sdata[4] = str(-float(sdata[4]))
         row = [key] + sdata
         while len(row) < data_len:
             row.append("NAN")
