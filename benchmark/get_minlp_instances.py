@@ -15,9 +15,9 @@ instance_df = instance_df.loc[(instance_df['probtype'] == "MINLP") | (instance_d
 
 mask = ((instance_df["objsense"] == "min") | (instance_df["objsense"] == "max")) & (instance_df["formats"].str.contains("'nl'"))
 convex_df = instance_df.loc[mask & (instance_df["convex"] == True)].copy(deep=True)
-convex_df = convex_df[["name", "primalbound", "dualbound"]]
+convex_df = convex_df[["name", "primalbound", "dualbound", "objsense"]]
 nonconvex_df = instance_df.loc[mask & (instance_df["convex"] == False)].copy(deep=True)
-nonconvex_df = nonconvex_df[["name", "primalbound", "dualbound"]]
+nonconvex_df = nonconvex_df[["name", "primalbound", "dualbound", "objsense"]]
 
 convex_df.set_index("name", inplace=True)
 nonconvex_df.set_index("name", inplace=True)

@@ -312,17 +312,21 @@ if __name__ == "__main__":
     solvers_obj = [f"{solver}.obj" for solver in solvers]
     solvers_calctime = [solver + ".calc_time" for solver in solvers]
     if solve_time == "solvetime":
-        solvers_calctime[2] = solvers[2] + ".solver_time"
-        solvers_calctime[3] = solvers[3] + ".solver_time"
+        for i in range(len(solvers_calctime)):
+            if "sbmiqp" in solvers_calctime[i]:
+                solvers_calctime[i] = solvers_calctime[i].split(".")[0] + ".solver_time"
 
     data[solvers_calctime] = data[solvers_calctime].map(to_float)
     data[solvers_obj] = data[solvers_obj].map(to_float)
     data['min.calctime'] = np.min(data[solvers_calctime], axis=1)
     data.set_index("name", inplace=True)
+
     for solver in solvers:
         if "shot" in solver:
             data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
-
+        if "gurobi" in solver or "scip" in solver:
+            mask = (data[f'{solver}.obj'].abs() > 1e10) | (data[f'{solver}.obj'] == 0)
+            data[f'{solver}.calc_time'][mask] = np.inf
     # clipping to 300 preserving inf
     cols = solvers_calctime + ["min.calctime"]
     mask = (data[cols] > 300) & np.isfinite(data[cols])
@@ -336,26 +340,17 @@ if __name__ == "__main__":
             tiny = np.abs(g) < tol
             g[tiny] = 0.0
         return g
+
     for s, ct in zip(solvers, solvers_calctime):
-        mask = data[ct] == 300                     # rows where this solver timed out
+        mask = data[ct] == 300
+        if key == "noncvx" and ("gurobi" in s or "scip" in s):  # in the noncvx case the time-out of scip and gurobi is connected with the time-out of sbmiqp
+            mask = (data[ct] == 300) | (data[ct]>=data[solvers_calctime[2]])
         gap  = rel_gap(data['primalbound'], data[f'{s}.obj'])
         failed = data[ct] == np.inf
         print(f'{s}: \t\t success {total_entries-failed.sum()-mask.sum():3d} | fail {failed.sum():2d} | time-out {mask.sum():3d} , gap <1e-1 {(gap[mask]<1e-1).sum():2d}')
 
-
-    # set to inf objective >1e8 <-1e8 and == 0 for gurobi and scip
-    if len(solvers_obj) == 6:
-        cols = solvers_obj[-2:]
-        mask = (data[cols].abs() > 1e8) | (data[cols] == 0)
-        data.loc[:, cols] = data[cols].mask(mask, np.inf)
-        cols_tmp = solvers_calctime[-2:]
-        mask1 = data[cols[0]] == np.inf
-        mask2 = data[cols[1]] == np.inf
-        data.loc[mask1, cols_tmp[0]] = np.inf
-        data.loc[mask2, cols_tmp[1]] = np.inf
-
     # New plots:
-    create_performance_profile(data, solvers_calctime, tau_max=10, name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=False)
-    create_performance_profile(data, solvers_obj, tau_max=1.5, name=f'{key}_obj_profile_nsol{len(solver_names)}_{solve_time}', title="Objective", legend_labels=solver_names, log_scale=False)
+    create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=True)
+    create_performance_profile(data, solvers_obj, tau_max=1e5, name=f'{key}_obj_profile_nsol{len(solver_names)}_{solve_time}', title="Objective", legend_labels=solver_names, log_scale=True)
 
     plt.show()

@@ -20,5 +20,3 @@ for d in data[1:]:
             problems_with_cut_correction.append(d[1].split("/")[-1])
 
 print(problems_with_cut_correction)
-breakpoint()
-
