@@ -32,5 +32,3 @@ nonconvex_df.to_csv(os.path.join(dirpath, "nonconvex_set_full.csv"))
 
 print(f"csv with convex instances saved at {os.path.join(dirpath, 'convex_set_full.csv')}")
 print(f"csv with nonconvex instances saved at {os.path.join(dirpath, 'nonconvex_set_full.csv')}")
-
-

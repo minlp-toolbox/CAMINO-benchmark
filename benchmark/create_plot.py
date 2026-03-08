@@ -294,8 +294,8 @@ if __name__ == "__main__":
     # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
 
     # =================== amplpy comparison ===================
-    solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee", f"{key}_scip", f"{key}_gurobi"]
-    solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee", "SCIP", "Gurobi",]
+    solvers = [f"{key}_bonmin", f"{key}_gurobi", f"{key}_scip", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee"]
+    solver_names = ["Bonmin", "Gurobi", "SCIP", "SHOT", "S-B-MIQP", "S-B-MIQP-ee",]
 
     # =================== alpha comparison ===================
     # solvers = [f"{key}_sbmiqp_005", f"{key}_sbmiqp_025", f"{key}_sbmiqp_050", f"{key}_sbmiqp_075", f"{key}_sbmiqp_095",]

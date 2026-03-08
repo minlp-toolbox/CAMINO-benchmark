@@ -1,0 +1,675 @@
+<osrl xmlns="os.optimizationservices.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schemaLocation="os.optimizationservices.org http://www.optimizationservices.org/schemas/2.0/OSrL.xsd">
+    <general>
+        <otherResults numberOfOtherResults="1">
+            <other name="UsedOptions">Dual.CutStrategy = 0
+Dual.ESH.InteriorPoint.CuttingPlane.ConstraintSelectionFactor = 0.25
+Dual.ESH.InteriorPoint.CuttingPlane.IterationLimit = 100
+Dual.ESH.InteriorPoint.CuttingPlane.IterationLimitSubsolver = 100
+Dual.ESH.InteriorPoint.CuttingPlane.Reuse = false
+Dual.ESH.InteriorPoint.CuttingPlane.TerminationToleranceAbs = 1
+Dual.ESH.InteriorPoint.CuttingPlane.TerminationToleranceRel = 1
+Dual.ESH.InteriorPoint.CuttingPlane.TimeLimit = 10
+Dual.ESH.InteriorPoint.MinimaxObjectiveLowerBound = -1000000000000
+Dual.ESH.InteriorPoint.MinimaxObjectiveUpperBound = 0.1
+Dual.ESH.InteriorPoint.UsePrimalSolution = 1
+Dual.ESH.Rootsearch.ConstraintTolerance = 1e-08
+Dual.ESH.Rootsearch.UniqueConstraints = false
+Dual.ESH.Rootsearch.UseMaxFunction = false
+Dual.HyperplaneCuts.ConstraintSelectionFactor = 0.5
+Dual.HyperplaneCuts.Delay = true
+Dual.HyperplaneCuts.MaxConstraintFactor = 0.1
+Dual.HyperplaneCuts.MaxPerIteration = 200
+Dual.HyperplaneCuts.ObjectiveRootSearch = 1
+Dual.HyperplaneCuts.SaveHyperplanePoints = false
+Dual.HyperplaneCuts.UseIntegerCuts = false
+Dual.MIP.CutOff.InitialValue = 1.7976931348623157e+308
+Dual.MIP.CutOff.Tolerance = 1e-05
+Dual.MIP.CutOff.UseInitialValue = false
+Dual.MIP.InfeasibilityRepair.IntegerCuts = true
+Dual.MIP.InfeasibilityRepair.IterationLimit = 100
+Dual.MIP.InfeasibilityRepair.TimeLimit = 10
+Dual.MIP.InfeasibilityRepair.Use = true
+Dual.MIP.NodeLimit = 1.7976931348623157e+308
+Dual.MIP.NumberOfThreads = 1
+Dual.MIP.OptimalityTolerance = 1e-06
+Dual.MIP.Presolve.Frequency = 1
+Dual.MIP.Presolve.RemoveRedundantConstraints = false
+Dual.MIP.Presolve.UpdateObtainedBounds = true
+Dual.MIP.SolutionLimit.ForceOptimal.Iteration = 10000
+Dual.MIP.SolutionLimit.ForceOptimal.Time = 1000
+Dual.MIP.SolutionLimit.IncreaseIterations = 50
+Dual.MIP.SolutionLimit.Initial = 1
+Dual.MIP.SolutionLimit.UpdateTolerance = 0.001
+Dual.MIP.SolutionPool.Capacity = 100
+Dual.MIP.Solver = 1
+Dual.MIP.UpdateObjectiveBounds = false
+Dual.ReductionCut.MaxIterations = 20
+Dual.ReductionCut.ReductionFactor = 0.001
+Dual.ReductionCut.Strategy = 0
+Dual.ReductionCut.Use = true
+Dual.Relaxation.Frequency = 0
+Dual.Relaxation.IterationLimit = 200
+Dual.Relaxation.MaxLazyConstraints = 0
+Dual.Relaxation.TerminationTolerance = 0.5
+Dual.Relaxation.TimeLimit = 30
+Dual.Relaxation.Use = true
+Dual.TreeStrategy = 1
+Model.BoundTightening.FeasibilityBased.MaxIterations = 5
+Model.BoundTightening.FeasibilityBased.TimeLimit = 2
+Model.BoundTightening.FeasibilityBased.Use = true
+Model.BoundTightening.FeasibilityBased.UseNonlinear = true
+Model.BoundTightening.InitialPOA.ConstraintTolerance = 0.1
+Model.BoundTightening.InitialPOA.CutStrategy = 1
+Model.BoundTightening.InitialPOA.IterationLimit = 50
+Model.BoundTightening.InitialPOA.ObjectiveConstraintTolerance = 0.001
+Model.BoundTightening.InitialPOA.ObjectiveGapAbsolute = 0.1
+Model.BoundTightening.InitialPOA.ObjectiveGapRelative = 0.1
+Model.BoundTightening.InitialPOA.StagnationConstraintTolerance = 0.01
+Model.BoundTightening.InitialPOA.StagnationIterationLimit = 5
+Model.BoundTightening.InitialPOA.TimeLimit = 5
+Model.BoundTightening.InitialPOA.Use = false
+Model.Convexity.AssumeConvex = false
+Model.Convexity.Quadratics.EigenValueTolerance = 1e-05
+Model.Reformulation.Bilinear.AddConvexEnvelope = false
+Model.Reformulation.Bilinear.IntegerFormulation = 1
+Model.Reformulation.Bilinear.IntegerFormulation.MaxDomain = 100
+Model.Reformulation.Constraint.PartitionNonlinearTerms = 1
+Model.Reformulation.Constraint.PartitionQuadraticTerms = 1
+Model.Reformulation.Monomials.Extract = true
+Model.Reformulation.Monomials.Formulation = 1
+Model.Reformulation.ObjectiveFunction.Epigraph.Use = false
+Model.Reformulation.ObjectiveFunction.PartitionNonlinearTerms = 1
+Model.Reformulation.ObjectiveFunction.PartitionQuadraticTerms = 1
+Model.Reformulation.Quadratics.EigenValueDecomposition.Formulation = 0
+Model.Reformulation.Quadratics.EigenValueDecomposition.Tolerance = 1e-06
+Model.Reformulation.Quadratics.EigenValueDecomposition.Use = false
+Model.Reformulation.Quadratics.ExtractStrategy = 1
+Model.Reformulation.Quadratics.Strategy = 2
+Model.Reformulation.Signomials.Extract = true
+Model.Variables.Continuous.MaximumUpperBound = 1e+20
+Model.Variables.Continuous.MinimumLowerBound = -1e+20
+Model.Variables.Integer.MaximumUpperBound = 2000000000
+Model.Variables.Integer.MinimumLowerBound = -2000000000
+Model.Variables.NonlinearObjectiveVariable.Bound = 1000000000000
+Output.Console.DualSolver.Show = false
+Output.Console.Iteration.Detail = 1
+Output.Console.LogLevel = 2
+Output.Console.PrimalSolver.Show = false
+Output.Debug.Enable = false
+Output.Debug.Path = 
+Output.File.LogLevel = 2
+Output.GAMS.AlternateSolutionsFile = 
+Output.OutputDirectory = 1
+Output.SaveNumberOfSolutions = 1
+Primal.FixedInteger.CallStrategy = 2
+Primal.FixedInteger.CreateInfeasibilityCut = false
+Primal.FixedInteger.DualPointGap.Relative = 0.001
+Primal.FixedInteger.Frequency.Dynamic = true
+Primal.FixedInteger.Frequency.Iteration = 10
+Primal.FixedInteger.Frequency.Time = 5
+Primal.FixedInteger.IterationLimit = 10000000
+Primal.FixedInteger.OnlyUniqueIntegerCombinations = true
+Primal.FixedInteger.Solver = 0
+Primal.FixedInteger.Source = 3
+Primal.FixedInteger.SourceProblem = 0
+Primal.FixedInteger.TimeLimit = 10
+Primal.FixedInteger.Use = true
+Primal.FixedInteger.Warmstart = true
+Primal.Rootsearch.Use = true
+Primal.Tolerance.Integer = 1e-05
+Primal.Tolerance.LinearConstraint = 1e-06
+Primal.Tolerance.NonlinearConstraint = 1e-05
+Primal.Tolerance.TrustLinearConstraintValues = true
+Strategy.UseRecommendedSettings = true
+Subsolver.Gurobi.Heuristics = 0.05
+Subsolver.Gurobi.MIPFocus = 0
+Subsolver.Gurobi.NumericFocus = 1
+Subsolver.Gurobi.PoolSearchMode = 0
+Subsolver.Gurobi.PoolSolutions = 10
+Subsolver.Gurobi.ScaleFlag = -1
+Subsolver.Ipopt.ConstraintViolationTolerance = 1e-08
+Subsolver.Ipopt.LinearSolver = 1
+Subsolver.Ipopt.MaxIterations = 1000
+Subsolver.Ipopt.RelativeConvergenceTolerance = 1e-08
+Subsolver.Rootsearch.ActiveConstraintTolerance = 0
+Subsolver.Rootsearch.MaxIterations = 100
+Subsolver.Rootsearch.Method = 0
+Subsolver.Rootsearch.TerminationTolerance = 1e-16
+Subsolver.SHOT.ReuseHyperplanes.Fraction = 0.1
+Subsolver.SHOT.ReuseHyperplanes.Use = true
+Subsolver.SHOT.UseFBBT = true
+Termination.ConstraintTolerance = 1e-08
+Termination.DualStagnation.ConstraintTolerance = 1e-06
+Termination.DualStagnation.IterationLimit = 2147483647
+Termination.IterationLimit = 200000
+Termination.ObjectiveConstraintTolerance = 1e-08
+Termination.ObjectiveGap.Absolute = 0.01
+Termination.ObjectiveGap.Relative = 0.01
+Termination.PrimalStagnation.IterationLimit = 50
+Termination.TimeLimit = 300
+</other>
+            <other name="DualObjectiveBound" value="1293.1208676194326" description="The dual bound for the objective"/>
+            <other name="PrimalObjectiveBound" value="1293.1208676194324" description="The primal bound for the objective"/>
+            <other name="MaxConstraintError" value="1.0619679844392493e-06" description="The maximal constraint error"/>
+            <other name="AbsoluteOptimalityGap" value="2.2737367544323206e-13" description="The absolute optimality gap"/>
+            <other name="RelativeOptimalityGap" value="1.758332736999268e-16" description="The relative optimality gap"/>
+            <other name="NumberOfLPProblems" value="4" description="The number of LP problems solved in the dual strategy"/>
+            <other name="NumberOfQPProblems" value="0" description="The number of QP problems solved in the dual strategy"/>
+            <other name="NumberOfFeasibleMILPProblems" value="0" description="The number of MILP problems solved to feasibility in the dual strategy"/>
+            <other name="NumberOfFeasibleMIQPProblems" value="0" description="The number of MIQP problems solved to feasibility in the dual strategy"/>
+            <other name="NumberOfOptimalMILPProblems" value="1" description="The number of MILP problems solved to optimality in the dual strategy"/>
+            <other name="NumberOfOptimalMIQPProblems" value="0" description="The number of MIQP problems solved to optimality in the dual strategy"/>
+            <other name="TotalNumberOfDualProblems" value="5" description="The total number of problems solved in the dual strategy"/>
+            <other name="NumberOfNLPProblems" value="1" description="The number of NLP problems solved in the primal strategy"/>
+            <other name="NumberOfPrimalSolutionsFound" value="5" description="The number of primal solutions found"/>
+            <other name="NumberOfSuccesfulInfeasibilityRepairsPerformed" value="0" description="The number of sucessful infeasibility repairs performed for nonconvex problems"/>
+            <other name="NumberOfUnsuccesfulInfeasibilityRepairsPerformed" value="0" description="The number of unsucessful infeasibility repairs performed for nonconvex problems"/>
+            <other name="NumberOfReductionCutStepsPerformed" value="0" description="The number of reduction cut steps performed for nonconvex problems"/>
+            <other name="numberOfPrimalImprovementsAfterInfeasibilityRepair" value="0" description="The number of cases where the repairing of infeasibilities for nonconvex problems has directly resulted in improved primal solutions"/>
+            <other name="numberOfPrimalImprovementsAfterReductionCut" value="0" description="The number of cases where the primal reduction cut has directly resulted in improved primal solutions"/>
+            <other name="DualSolver" value="Gurobi 13.0" description="The dual solver used"/>
+            <other name="FixedNLPSolver" value="Gurobi 13.0" description="The dual solver used"/>
+            <other name="NumberOfPrimalSolutionsFoundNLPFixedIntegers" description="The number of primal solutions found by solving integer-fixed NLP problems" value="1"/>
+            <other name="NumberOfPrimalSolutionsFoundMIPSolutionPool" description="The number of primal solutions found from the MIP solution pool" value="1"/>
+            <other name="NumberOfPrimalSolutionsFoundMIPCallback" description="The number of primal solutions found in MIP callbacks" value="3"/>
+        </otherResults>
+        <solverInvoked>Supporting Hyperplane Optimization Toolkit, version 1.1.0</solverInvoked>
+        <instanceName>rsyn0805m</instanceName>
+    </general>
+    <job>
+        <timingInformation numberOfTimes="16">
+            <time type="Total" unit="second" description="Total solution time">0.13134253900000001</time>
+            <time type="ProblemInitialization" unit="second" description="- problem initialization">0.001324204</time>
+            <time type="ProblemReformulation" unit="second" description="- problem reformulation">0.0044414800000000003</time>
+            <time type="BoundTightening" unit="second" description="- bound tightening">0.004883175</time>
+            <time type="BoundTighteningPOA" unit="second" description="  - initial outer approximation">0</time>
+            <time type="BoundTighteningFBBTOriginal" unit="second" description="  - feasibility based (original problem)">0.00096735500000000004</time>
+            <time type="BoundTighteningFBBTReformulated" unit="second" description="  - feasibility based (reformulated problem)">0.0038896410000000001</time>
+            <time type="InteriorPointSearch" unit="second" description="- interior point search">0.0038763650000000001</time>
+            <time type="DualProblemsRelaxed" unit="second" description="  - solving relaxed problems">0.004821507</time>
+            <time type="DualStrategy" unit="second" description="- dual strategy">0.113817528</time>
+            <time type="DualProblemsDiscrete" unit="second" description="  - solving MIP problems">0.106803487</time>
+            <time type="DualCutGenerationRootSearch" unit="second" description="  - root search for constraint cuts">0.001289417</time>
+            <time type="DualObjectiveRootSearch" unit="second" description="  - root search for objective cut">0</time>
+            <time type="PrimalStrategy" unit="second" description="- primal strategy">0.042569377999999998</time>
+            <time type="PrimalBoundStrategyNLP" unit="second" description="  - solving NLP problems">0.040891591999999997</time>
+            <time type="PrimalBoundStrategyRootSearch" unit="second" description="  - performing root searches">0.000505983</time>
+        </timingInformation>
+    </job>
+    <optimization numberOfSolutions="1" numberOfVariables="170" numberOfConstraints="286" numberOfObjectives="1">
+        <solution>
+            <constraints>
+                <dualValues numberOfCon="286">
+                    <con idx="0" name="e264">-1.000000</con>
+                    <con idx="1" name="e267">-0.000000</con>
+                    <con idx="2" name="e274">0.000001</con>
+                    <con idx="3" name="e2">0.000000</con>
+                    <con idx="4" name="e3">0.000000</con>
+                    <con idx="5" name="e4">0.000000</con>
+                    <con idx="6" name="e5">0.000000</con>
+                    <con idx="7" name="e6">0.000000</con>
+                    <con idx="8" name="e7">0.000000</con>
+                    <con idx="9" name="e8">0.000000</con>
+                    <con idx="10" name="e9">0.000000</con>
+                    <con idx="11" name="e10">0.000000</con>
+                    <con idx="12" name="e11">0.000000</con>
+                    <con idx="13" name="e12">0.000000</con>
+                    <con idx="14" name="e13">0.000000</con>
+                    <con idx="15" name="e14">0.000000</con>
+                    <con idx="16" name="e15">0.000000</con>
+                    <con idx="17" name="e16">0.000000</con>
+                    <con idx="18" name="e17">0.000000</con>
+                    <con idx="19" name="e18">0.000000</con>
+                    <con idx="20" name="e19">0.000000</con>
+                    <con idx="21" name="e20">0.000000</con>
+                    <con idx="22" name="e21">0.000000</con>
+                    <con idx="23" name="e22">0.000000</con>
+                    <con idx="24" name="e23">0.000000</con>
+                    <con idx="25" name="e24">0.000000</con>
+                    <con idx="26" name="e25">0.000000</con>
+                    <con idx="27" name="e26">0.000000</con>
+                    <con idx="28" name="e27">0.000000</con>
+                    <con idx="29" name="e28">0.000000</con>
+                    <con idx="30" name="e29">0.000000</con>
+                    <con idx="31" name="e30">0.000000</con>
+                    <con idx="32" name="e31">0.000000</con>
+                    <con idx="33" name="e32">0.000000</con>
+                    <con idx="34" name="e33">0.000000</con>
+                    <con idx="35" name="e34">0.000000</con>
+                    <con idx="36" name="e35">0.000000</con>
+                    <con idx="37" name="e36">0.000000</con>
+                    <con idx="38" name="e37">-16.600000</con>
+                    <con idx="39" name="e38">-40.902857</con>
+                    <con idx="40" name="e39">0.000000</con>
+                    <con idx="41" name="e40">0.000000</con>
+                    <con idx="42" name="e41">-0.512500</con>
+                    <con idx="43" name="e42">-1.837500</con>
+                    <con idx="44" name="e43">-22.014506</con>
+                    <con idx="45" name="e44">-35.307098</con>
+                    <con idx="46" name="e45">0.000000</con>
+                    <con idx="47" name="e46">-3.228571</con>
+                    <con idx="48" name="e47">0.000000</con>
+                    <con idx="49" name="e48">0.000000</con>
+                    <con idx="50" name="e49">0.000000</con>
+                    <con idx="51" name="e50">0.000000</con>
+                    <con idx="52" name="e51">0.000000</con>
+                    <con idx="53" name="e52">0.000000</con>
+                    <con idx="54" name="e53">0.000000</con>
+                    <con idx="55" name="e54">0.000000</con>
+                    <con idx="56" name="e55">0.000000</con>
+                    <con idx="57" name="e56">0.000000</con>
+                    <con idx="58" name="e57">0.000000</con>
+                    <con idx="59" name="e58">0.000000</con>
+                    <con idx="60" name="e59">0.000000</con>
+                    <con idx="61" name="e60">0.000000</con>
+                    <con idx="62" name="e61">0.000000</con>
+                    <con idx="63" name="e62">0.000000</con>
+                    <con idx="64" name="e63">0.000000</con>
+                    <con idx="65" name="e64">0.000000</con>
+                    <con idx="66" name="e65">0.000000</con>
+                    <con idx="67" name="e66">0.000000</con>
+                    <con idx="68" name="e67">0.000000</con>
+                    <con idx="69" name="e68">0.000000</con>
+                    <con idx="70" name="e69">0.000000</con>
+                    <con idx="71" name="e70">0.000000</con>
+                    <con idx="72" name="e71">-145.750000</con>
+                    <con idx="73" name="e72">-148.750000</con>
+                    <con idx="74" name="e73">-145.750000</con>
+                    <con idx="75" name="e74">0.000000</con>
+                    <con idx="76" name="e75">-151.750000</con>
+                    <con idx="77" name="e76">-148.750000</con>
+                    <con idx="78" name="e77">-151.750000</con>
+                    <con idx="79" name="e78">0.000000</con>
+                    <con idx="80" name="e79">0.000000</con>
+                    <con idx="81" name="e80">-254.292207</con>
+                    <con idx="82" name="e81">-254.045833</con>
+                    <con idx="83" name="e82">-254.292207</con>
+                    <con idx="84" name="e83">0.000000</con>
+                    <con idx="85" name="e84">-166.003626</con>
+                    <con idx="86" name="e85">-166.250000</con>
+                    <con idx="87" name="e86">-166.003626</con>
+                    <con idx="88" name="e87">0.000000</con>
+                    <con idx="89" name="e88">-20.958333</con>
+                    <con idx="90" name="e89">-20.416667</con>
+                    <con idx="91" name="e90">-20.958333</con>
+                    <con idx="92" name="e91">0.000000</con>
+                    <con idx="93" name="e92">-20.958333</con>
+                    <con idx="94" name="e93">-20.416667</con>
+                    <con idx="95" name="e94">-20.958333</con>
+                    <con idx="96" name="e95">-0.000000</con>
+                    <con idx="97" name="e96">-19.875000</con>
+                    <con idx="98" name="e97">-20.416667</con>
+                    <con idx="99" name="e98">-19.875000</con>
+                    <con idx="100" name="e99">-0.000000</con>
+                    <con idx="101" name="e100">-19.875000</con>
+                    <con idx="102" name="e101">-20.416667</con>
+                    <con idx="103" name="e102">-19.875000</con>
+                    <con idx="104" name="e103">-17.916667</con>
+                    <con idx="105" name="e104">-18.750000</con>
+                    <con idx="106" name="e105">-17.916667</con>
+                    <con idx="107" name="e106">0.000000</con>
+                    <con idx="108" name="e107">-19.583333</con>
+                    <con idx="109" name="e108">-18.750000</con>
+                    <con idx="110" name="e109">-19.583333</con>
+                    <con idx="111" name="e110">0.000000</con>
+                    <con idx="112" name="e111">-17.312500</con>
+                    <con idx="113" name="e112">0.000000</con>
+                    <con idx="114" name="e113">-17.687500</con>
+                    <con idx="115" name="e114">-17.812500</con>
+                    <con idx="116" name="e115">-17.312500</con>
+                    <con idx="117" name="e116">0.000000</con>
+                    <con idx="118" name="e117">-17.687500</con>
+                    <con idx="119" name="e118">-17.812500</con>
+                    <con idx="120" name="e119">-18.312500</con>
+                    <con idx="121" name="e120">-0.000000</con>
+                    <con idx="122" name="e121">-17.937500</con>
+                    <con idx="123" name="e122">-17.812500</con>
+                    <con idx="124" name="e123">-18.312500</con>
+                    <con idx="125" name="e124">-0.000000</con>
+                    <con idx="126" name="e125">-17.937500</con>
+                    <con idx="127" name="e126">-17.812500</con>
+                    <con idx="128" name="e127">-66.312500</con>
+                    <con idx="129" name="e128">0.000000</con>
+                    <con idx="130" name="e129">-66.312500</con>
+                    <con idx="131" name="e130">-66.937500</con>
+                    <con idx="132" name="e131">-16.562500</con>
+                    <con idx="133" name="e132">0.000000</con>
+                    <con idx="134" name="e133">-16.562500</con>
+                    <con idx="135" name="e134">-15.937500</con>
+                    <con idx="136" name="e135">-90.514286</con>
+                    <con idx="137" name="e136">-94.457143</con>
+                    <con idx="138" name="e137">-90.514286</con>
+                    <con idx="139" name="e138">0.000000</con>
+                    <con idx="140" name="e139">-60.942857</con>
+                    <con idx="141" name="e140">-57.000000</con>
+                    <con idx="142" name="e141">-60.942857</con>
+                    <con idx="143" name="e142">0.000000</con>
+                    <con idx="144" name="e143">-34.285714</con>
+                    <con idx="145" name="e144">-39.428571</con>
+                    <con idx="146" name="e145">-34.285714</con>
+                    <con idx="147" name="e146">0.000000</con>
+                    <con idx="148" name="e147">-44.571429</con>
+                    <con idx="149" name="e148">-39.428571</con>
+                    <con idx="150" name="e149">-44.571429</con>
+                    <con idx="151" name="e150">0.000000</con>
+                    <con idx="152" name="e151">-23.000000</con>
+                    <con idx="153" name="e152">-23.000000</con>
+                    <con idx="154" name="e153">-23.000000</con>
+                    <con idx="155" name="e154">-38.000000</con>
+                    <con idx="156" name="e155">-36.550770</con>
+                    <con idx="157" name="e156">-92.550770</con>
+                    <con idx="158" name="e157">-92.550770</con>
+                    <con idx="159" name="e158">-92.550770</con>
+                    <con idx="160" name="e159">-10.000000</con>
+                    <con idx="161" name="e160">-20.000000</con>
+                    <con idx="162" name="e161">-20.000000</con>
+                    <con idx="163" name="e162">-20.000000</con>
+                    <con idx="164" name="e163">-5.000000</con>
+                    <con idx="165" name="e164">-5.000000</con>
+                    <con idx="166" name="e165">-5.000000</con>
+                    <con idx="167" name="e166">0.000000</con>
+                    <con idx="168" name="e167">-22.000000</con>
+                    <con idx="169" name="e168">-7.000000</con>
+                    <con idx="170" name="e169">-22.000000</con>
+                    <con idx="171" name="e170">-22.000000</con>
+                    <con idx="172" name="e171">-29.000000</con>
+                    <con idx="173" name="e172">0.000000</con>
+                    <con idx="174" name="e173">-29.000000</con>
+                    <con idx="175" name="e174">-29.000000</con>
+                    <con idx="176" name="e175">-10.628571</con>
+                    <con idx="177" name="e176">-10.628571</con>
+                    <con idx="178" name="e177">-10.628571</con>
+                    <con idx="179" name="e178">-6.628571</con>
+                    <con idx="180" name="e179">0.000000</con>
+                    <con idx="181" name="e180">0.000000</con>
+                    <con idx="182" name="e181">0.000000</con>
+                    <con idx="183" name="e182">-5.000000</con>
+                    <con idx="184" name="e183">-46.000000</con>
+                    <con idx="185" name="e184">-46.000000</con>
+                    <con idx="186" name="e185">-46.000000</con>
+                    <con idx="187" name="e186">-46.000000</con>
+                    <con idx="188" name="e187">-37.000000</con>
+                    <con idx="189" name="e188">-37.000000</con>
+                    <con idx="190" name="e189">-37.000000</con>
+                    <con idx="191" name="e190">-37.000000</con>
+                    <con idx="192" name="e191">-22.000000</con>
+                    <con idx="193" name="e192">-22.000000</con>
+                    <con idx="194" name="e193">-22.000000</con>
+                    <con idx="195" name="e194">-22.000000</con>
+                    <con idx="196" name="e195">-24.000000</con>
+                    <con idx="197" name="e196">-24.000000</con>
+                    <con idx="198" name="e197">-24.000000</con>
+                    <con idx="199" name="e198">-24.000000</con>
+                    <con idx="200" name="e199">-23.000000</con>
+                    <con idx="201" name="e200">-23.000000</con>
+                    <con idx="202" name="e201">-23.000000</con>
+                    <con idx="203" name="e202">-23.000000</con>
+                    <con idx="204" name="e203">-39.000000</con>
+                    <con idx="205" name="e204">-39.000000</con>
+                    <con idx="206" name="e205">-39.000000</con>
+                    <con idx="207" name="e206">-39.000000</con>
+                    <con idx="208" name="e207">-28.000000</con>
+                    <con idx="209" name="e208">-28.000000</con>
+                    <con idx="210" name="e209">-28.000000</con>
+                    <con idx="211" name="e210">-28.000000</con>
+                    <con idx="212" name="e211">-23.000000</con>
+                    <con idx="213" name="e212">-23.000000</con>
+                    <con idx="214" name="e213">-23.000000</con>
+                    <con idx="215" name="e214">-23.000000</con>
+                    <con idx="216" name="e215">0.000000</con>
+                    <con idx="217" name="e216">0.000000</con>
+                    <con idx="218" name="e217">0.000000</con>
+                    <con idx="219" name="e218">0.000000</con>
+                    <con idx="220" name="e219">0.000000</con>
+                    <con idx="221" name="e220">0.000000</con>
+                    <con idx="222" name="e221">0.000000</con>
+                    <con idx="223" name="e222">0.000000</con>
+                    <con idx="224" name="e223">0.000000</con>
+                    <con idx="225" name="e224">0.000000</con>
+                    <con idx="226" name="e225">0.000000</con>
+                    <con idx="227" name="e226">0.000000</con>
+                    <con idx="228" name="e227">0.000000</con>
+                    <con idx="229" name="e228">0.000000</con>
+                    <con idx="230" name="e229">0.000000</con>
+                    <con idx="231" name="e230">0.000000</con>
+                    <con idx="232" name="e231">0.000000</con>
+                    <con idx="233" name="e232">0.000000</con>
+                    <con idx="234" name="e233">0.000000</con>
+                    <con idx="235" name="e234">0.000000</con>
+                    <con idx="236" name="e235">0.000000</con>
+                    <con idx="237" name="e236">0.000000</con>
+                    <con idx="238" name="e237">0.000000</con>
+                    <con idx="239" name="e238">0.000000</con>
+                    <con idx="240" name="e239">0.000000</con>
+                    <con idx="241" name="e240">0.000000</con>
+                    <con idx="242" name="e241">0.000000</con>
+                    <con idx="243" name="e242">0.000000</con>
+                    <con idx="244" name="e243">0.000000</con>
+                    <con idx="245" name="e244">0.000000</con>
+                    <con idx="246" name="e245">0.000000</con>
+                    <con idx="247" name="e246">0.000000</con>
+                    <con idx="248" name="e247">-3351.343375</con>
+                    <con idx="249" name="e248">0.000000</con>
+                    <con idx="250" name="e249">0.000000</con>
+                    <con idx="251" name="e250">0.000000</con>
+                    <con idx="252" name="e251">0.000000</con>
+                    <con idx="253" name="e252">0.000000</con>
+                    <con idx="254" name="e253">0.000000</con>
+                    <con idx="255" name="e254">0.000000</con>
+                    <con idx="256" name="e255">0.000000</con>
+                    <con idx="257" name="e256">0.000000</con>
+                    <con idx="258" name="e257">0.000000</con>
+                    <con idx="259" name="e258">0.000000</con>
+                    <con idx="260" name="e259">0.000000</con>
+                    <con idx="261" name="e260">0.000000</con>
+                    <con idx="262" name="e261">0.000000</con>
+                    <con idx="263" name="e262">0.000000</con>
+                    <con idx="264" name="e263">0.000000</con>
+                    <con idx="265" name="e265">0.000000</con>
+                    <con idx="266" name="e266">0.000000</con>
+                    <con idx="267" name="e268">0.000000</con>
+                    <con idx="268" name="e269">0.000000</con>
+                    <con idx="269" name="e270">-1.000000</con>
+                    <con idx="270" name="e271">-1.000000</con>
+                    <con idx="271" name="e272">0.000000</con>
+                    <con idx="272" name="e273">0.000000</con>
+                    <con idx="273" name="e275">-2.541737</con>
+                    <con idx="274" name="e276">-1.598550</con>
+                    <con idx="275" name="e277">0.000000</con>
+                    <con idx="276" name="e278">0.000000</con>
+                    <con idx="277" name="e279">0.000000</con>
+                    <con idx="278" name="e280">0.000000</con>
+                    <con idx="279" name="e281">-0.335737</con>
+                    <con idx="280" name="e282">-1.916526</con>
+                    <con idx="281" name="e283">-0.958263</con>
+                    <con idx="282" name="e284">0.000000</con>
+                    <con idx="283" name="e285">-1.000000</con>
+                    <con idx="284" name="e286">0.000000</con>
+                    <con idx="285" name="e287">0.000000</con>
+                </dualValues>
+            </constraints>
+            <variables>
+                <values numberOfVar="170">
+                    <var idx="0" name="x153">0.000000</var>
+                    <var idx="1" name="x154">10.000000</var>
+                    <var idx="2" name="x161">0.335737</var>
+                    <var idx="3" name="x2">12.985494</var>
+                    <var idx="4" name="x3">12.000000</var>
+                    <var idx="5" name="x4">0.985494</var>
+                    <var idx="6" name="x5">10.200000</var>
+                    <var idx="7" name="x6">10.200000</var>
+                    <var idx="8" name="x7">0.692902</var>
+                    <var idx="9" name="x8">2.463736</var>
+                    <var idx="10" name="x9">3.104307</var>
+                    <var idx="11" name="x10">5.583474</var>
+                    <var idx="12" name="x11">25.000000</var>
+                    <var idx="13" name="x12">5.000000</var>
+                    <var idx="14" name="x13">1.770833</var>
+                    <var idx="15" name="x14">2.479167</var>
+                    <var idx="16" name="x15">20.000000</var>
+                    <var idx="17" name="x16">18.000000</var>
+                    <var idx="18" name="x17">15.000000</var>
+                    <var idx="19" name="x18">3.000000</var>
+                    <var idx="20" name="x19">0.712500</var>
+                    <var idx="21" name="x20">2.137500</var>
+                    <var idx="22" name="x21">0.712500</var>
+                    <var idx="23" name="x22">2.137500</var>
+                    <var idx="24" name="x23">20.771429</var>
+                    <var idx="25" name="x24">5.000000</var>
+                    <var idx="26" name="x25">15.771429</var>
+                    <var idx="27" name="x26">17.000000</var>
+                    <var idx="28" name="x27">17.000000</var>
+                    <var idx="29" name="x28">41.202857</var>
+                    <var idx="30" name="x29">41.202857</var>
+                    <var idx="31" name="x30">30.000000</var>
+                    <var idx="32" name="x31">30.000000</var>
+                    <var idx="33" name="x32">27.600000</var>
+                    <var idx="34" name="x33">0.200000</var>
+                    <var idx="35" name="x34">0.500000</var>
+                    <var idx="36" name="x35">0.712500</var>
+                    <var idx="37" name="x36">2.137500</var>
+                    <var idx="38" name="x37">64.927471</var>
+                    <var idx="39" name="x38">60.000000</var>
+                    <var idx="40" name="x39">4.927471</var>
+                    <var idx="41" name="x40">51.000000</var>
+                    <var idx="42" name="x41">51.000000</var>
+                    <var idx="43" name="x42">1.385805</var>
+                    <var idx="44" name="x43">4.927471</var>
+                    <var idx="45" name="x44">4.434724</var>
+                    <var idx="46" name="x45">7.976391</var>
+                    <var idx="47" name="x46">20.833333</var>
+                    <var idx="48" name="x47">4.166667</var>
+                    <var idx="49" name="x48">3.541667</var>
+                    <var idx="50" name="x49">3.541667</var>
+                    <var idx="51" name="x50">16.666667</var>
+                    <var idx="52" name="x51">15.000000</var>
+                    <var idx="53" name="x52">12.500000</var>
+                    <var idx="54" name="x53">2.500000</var>
+                    <var idx="55" name="x54">2.375000</var>
+                    <var idx="56" name="x55">2.375000</var>
+                    <var idx="57" name="x56">2.375000</var>
+                    <var idx="58" name="x57">2.375000</var>
+                    <var idx="59" name="x58">51.928571</var>
+                    <var idx="60" name="x59">12.500000</var>
+                    <var idx="61" name="x60">39.428571</var>
+                    <var idx="62" name="x61">10.625000</var>
+                    <var idx="63" name="x62">10.625000</var>
+                    <var idx="64" name="x63">37.457143</var>
+                    <var idx="65" name="x64">37.457143</var>
+                    <var idx="66" name="x65">42.857143</var>
+                    <var idx="67" name="x66">42.857143</var>
+                    <var idx="68" name="x67">39.428571</var>
+                    <var idx="69" name="x68">1.000000</var>
+                    <var idx="70" name="x69">0.714286</var>
+                    <var idx="71" name="x70">2.375000</var>
+                    <var idx="72" name="x71">2.375000</var>
+                    <var idx="73" name="x72">1.800000</var>
+                    <var idx="74" name="x73">0.344923</var>
+                    <var idx="75" name="x74">0.750000</var>
+                    <var idx="76" name="x75">2.000000</var>
+                    <var idx="77" name="x76">0.150000</var>
+                    <var idx="78" name="x77">3.000000</var>
+                    <var idx="79" name="x78">2.168571</var>
+                    <var idx="80" name="x79">2.400000</var>
+                    <var idx="81" name="x80">0.000000</var>
+                    <var idx="82" name="x81">0.000000</var>
+                    <var idx="83" name="x82">0.000000</var>
+                    <var idx="84" name="x83">0.000000</var>
+                    <var idx="85" name="x84">0.000000</var>
+                    <var idx="86" name="x85">0.000000</var>
+                    <var idx="87" name="x86">0.000000</var>
+                    <var idx="88" name="x87">0.000000</var>
+                    <var idx="89" name="x152">10.000000</var>
+                    <var idx="90" name="x155">0.000000</var>
+                    <var idx="91" name="x156">2.877474</var>
+                    <var idx="92" name="x157">2.877474</var>
+                    <var idx="93" name="x158">0.000000</var>
+                    <var idx="94" name="x159">2.877474</var>
+                    <var idx="95" name="x160">0.000000</var>
+                    <var idx="96" name="x162">2.541737</var>
+                    <var idx="97" name="x163">5.083474</var>
+                    <var idx="98" name="x164">0.000000</var>
+                    <var idx="99" name="x165">0.434226</var>
+                    <var idx="100" name="x166">2.541737</var>
+                    <var idx="101" name="b88">0.000000</var>
+                    <var idx="102" name="b89">0.000000</var>
+                    <var idx="103" name="b90">-0.000000</var>
+                    <var idx="104" name="b91">1.000000</var>
+                    <var idx="105" name="b92">1.000000</var>
+                    <var idx="106" name="b93">0.000000</var>
+                    <var idx="107" name="b94">-0.000000</var>
+                    <var idx="108" name="b95">-0.000000</var>
+                    <var idx="109" name="b96">1.000000</var>
+                    <var idx="110" name="b97">0.000000</var>
+                    <var idx="111" name="b98">-0.000000</var>
+                    <var idx="112" name="b99">-0.000000</var>
+                    <var idx="113" name="b100">0.000000</var>
+                    <var idx="114" name="b101">-0.000000</var>
+                    <var idx="115" name="b102">0.000000</var>
+                    <var idx="116" name="b103">1.000000</var>
+                    <var idx="117" name="b104">-0.000000</var>
+                    <var idx="118" name="b105">1.000000</var>
+                    <var idx="119" name="b106">-0.000000</var>
+                    <var idx="120" name="b107">-0.000000</var>
+                    <var idx="121" name="b108">-0.000000</var>
+                    <var idx="122" name="b109">1.000000</var>
+                    <var idx="123" name="b110">0.000000</var>
+                    <var idx="124" name="b111">-0.000000</var>
+                    <var idx="125" name="b112">-0.000000</var>
+                    <var idx="126" name="b113">-0.000000</var>
+                    <var idx="127" name="b114">0.000000</var>
+                    <var idx="128" name="b115">1.000000</var>
+                    <var idx="129" name="b116">-0.000000</var>
+                    <var idx="130" name="b117">0.000000</var>
+                    <var idx="131" name="b118">0.000000</var>
+                    <var idx="132" name="b119">1.000000</var>
+                    <var idx="133" name="b120">-0.000000</var>
+                    <var idx="134" name="b121">-0.000000</var>
+                    <var idx="135" name="b122">-0.000000</var>
+                    <var idx="136" name="b123">-0.000000</var>
+                    <var idx="137" name="b124">-0.000000</var>
+                    <var idx="138" name="b125">-0.000000</var>
+                    <var idx="139" name="b126">-0.000000</var>
+                    <var idx="140" name="b127">-0.000000</var>
+                    <var idx="141" name="b128">-0.000000</var>
+                    <var idx="142" name="b129">-0.000000</var>
+                    <var idx="143" name="b130">-0.000000</var>
+                    <var idx="144" name="b131">-0.000000</var>
+                    <var idx="145" name="b132">-0.000000</var>
+                    <var idx="146" name="b133">-0.000000</var>
+                    <var idx="147" name="b134">-0.000000</var>
+                    <var idx="148" name="b135">-0.000000</var>
+                    <var idx="149" name="b136">-0.000000</var>
+                    <var idx="150" name="b137">-0.000000</var>
+                    <var idx="151" name="b138">-0.000000</var>
+                    <var idx="152" name="b139">-0.000000</var>
+                    <var idx="153" name="b140">-0.000000</var>
+                    <var idx="154" name="b141">-0.000000</var>
+                    <var idx="155" name="b142">-0.000000</var>
+                    <var idx="156" name="b143">-0.000000</var>
+                    <var idx="157" name="b144">-0.000000</var>
+                    <var idx="158" name="b145">-0.000000</var>
+                    <var idx="159" name="b146">-0.000000</var>
+                    <var idx="160" name="b147">-0.000000</var>
+                    <var idx="161" name="b148">-0.000000</var>
+                    <var idx="162" name="b149">-0.000000</var>
+                    <var idx="163" name="b150">-0.000000</var>
+                    <var idx="164" name="b151">-0.000000</var>
+                    <var idx="165" name="b167">0.000000</var>
+                    <var idx="166" name="b168">1.000000</var>
+                    <var idx="167" name="b169">-0.000000</var>
+                    <var idx="168" name="b170">1.000000</var>
+                    <var idx="169" name="b171">1.000000</var>
+                </values>
+            </variables>
+            <objectives>
+                <values numberOfObj="1">
+                    <obj idx="-1">1293.120868</obj>
+                </values>
+            </objectives>
+            <status type="globallyOptimal" description="Solved to global optimality" numberOfSubstatuses="1">
+                <substatus type="stoppedByBounds" description="Terminated since absolute gap met requirements."/>
+            </status>
+        </solution>
+    </optimization>
+</osrl>

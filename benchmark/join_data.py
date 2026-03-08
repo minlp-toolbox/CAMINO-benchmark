@@ -48,8 +48,9 @@ with open(csv_out, "w") as f:
     data_len = len(headers)
     for key, sdata in data.items():
         if sdata[2] == "max":
-            if sdata[3] != "NAN":
+            if sdata[3] != "NAN" and sdata[3] != "FAILED":
                 sdata[3] = str(-float(sdata[3]))
+            if sdata[4] != "NAN" and sdata[4] != "FAILED":
                 sdata[4] = str(-float(sdata[4]))
         row = [key] + sdata
         while len(row) < data_len:
