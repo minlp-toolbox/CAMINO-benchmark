@@ -32,48 +32,18 @@ python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set_full.csv
 
 
 # ============================== Combine files for tuning alpha in sbmiqp ==============================
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_005/overview.json $1/cvx_sbmiqp_005.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_025/overview.json $1/cvx_sbmiqp_025.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_050/overview.json $1/cvx_sbmiqp_050.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_075/overview.json $1/cvx_sbmiqp_075.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_095/overview.json $1/cvx_sbmiqp_095.csv
-# python ./benchmark/join_data.py $1/cvx.csv ./benchmark/convex_set.csv $1/cvx_sbmiqp_005.csv $1/cvx_sbmiqp_025.csv $1/cvx_sbmiqp_050.csv $1/cvx_sbmiqp_075.csv $1/cvx_sbmiqp_095.csv
-
-
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_005/overview.json $1/noncvx_sbmiqp_005.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_025/overview.json $1/noncvx_sbmiqp_025.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_050/overview.json $1/noncvx_sbmiqp_050.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_075/overview.json $1/noncvx_sbmiqp_075.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_095/overview.json $1/noncvx_sbmiqp_095.csv
-# python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp_005.csv $1/noncvx_sbmiqp_025.csv $1/noncvx_sbmiqp_050.csv $1/noncvx_sbmiqp_075.csv $1/noncvx_sbmiqp_095.csv
-
-
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee_005/overview.json $1/cvx_sbmiqp_ee_005.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee_025/overview.json $1/cvx_sbmiqp_ee_025.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee_050/overview.json $1/cvx_sbmiqp_ee_050.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee_075/overview.json $1/cvx_sbmiqp_ee_075.csv
-# python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee_095/overview.json $1/cvx_sbmiqp_ee_095.csv
-# python ./benchmark/join_data.py $1/cvx_ee.csv ./benchmark/convex_set.csv $1/cvx_sbmiqp_ee_005.csv $1/cvx_sbmiqp_ee_025.csv $1/cvx_sbmiqp_ee_050.csv $1/cvx_sbmiqp_ee_075.csv $1/cvx_sbmiqp_ee_095.csv
-
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_005/overview.json $1/noncvx_sbmiqp_ee_005.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_025/overview.json $1/noncvx_sbmiqp_ee_025.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_050/overview.json $1/noncvx_sbmiqp_ee_050.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_075/overview.json $1/noncvx_sbmiqp_ee_075.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_095/overview.json $1/noncvx_sbmiqp_ee_095.csv
-# python ./benchmark/join_data.py $1/noncvx_ee.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp_ee_005.csv $1/noncvx_sbmiqp_ee_025.csv $1/noncvx_sbmiqp_ee_050.csv $1/noncvx_sbmiqp_ee_075.csv $1/noncvx_sbmiqp_ee_095.csv
+# python ./benchmark/to_csv.py $1/overview005.json $1/cvx_sbmiqp_ee_005.csv
+# python ./benchmark/to_csv.py $1/overview025.json $1/cvx_sbmiqp_ee_025.csv
+# python ./benchmark/to_csv.py $1/overview050.json $1/cvx_sbmiqp_ee_050.csv
+# python ./benchmark/to_csv.py $1/overview075.json $1/cvx_sbmiqp_ee_075.csv
+# python ./benchmark/to_csv.py $1/overview095.json $1/cvx_sbmiqp_ee_095.csv
+# python ./benchmark/join_data.py $1/cvx.csv ./benchmark/convex_set_full.csv $1/cvx_sbmiqp_ee_005.csv $1/cvx_sbmiqp_ee_025.csv $1/cvx_sbmiqp_ee_050.csv $1/cvx_sbmiqp_ee_075.csv $1/cvx_sbmiqp_ee_095.csv
 
 
 # ============================== Combine files for tuning rho in sbmiqp ==============================
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_rho_1.0/overview.json $1/noncvx_sbmiqp_rho_1.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_rho_1_5/overview.json $1/noncvx_sbmiqp_rho_1_5.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_rho_5.0/overview.json $1/noncvx_sbmiqp_rho_5.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_rho_10.0/overview.json $1/noncvx_sbmiqp_rho_10.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_rho_50.0/overview.json $1/noncvx_sbmiqp_rho_50.0.csv
-# python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp_rho_1.0.csv $1/noncvx_sbmiqp_rho_1_5.csv $1/noncvx_sbmiqp_rho_5.0.csv $1/noncvx_sbmiqp_rho_10.0.csv $1/noncvx_sbmiqp_rho_50.0.csv
-
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_rho_1.0/overview.json $1/noncvx_sbmiqp_ee_rho_1.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_rho_1_5/overview.json $1/noncvx_sbmiqp_ee_rho_1_5.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_rho_5.0/overview.json $1/noncvx_sbmiqp_ee_rho_5.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_rho_10.0/overview.json $1/noncvx_sbmiqp_ee_rho_10.0.csv
-# python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee_rho_50.0/overview.json $1/noncvx_sbmiqp_ee_rho_50.0.csv
-# python ./benchmark/join_data.py $1/noncvx_ee.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp_ee_rho_1.0.csv $1/noncvx_sbmiqp_ee_rho_1_5.csv $1/noncvx_sbmiqp_ee_rho_5.0.csv $1/noncvx_sbmiqp_ee_rho_10.0.csv $1/noncvx_sbmiqp_ee_rho_50.0.csv
+# python ./benchmark/to_csv.py $1/overview_010.json  $1/noncvx_sbmiqp_010.csv
+# python ./benchmark/to_csv.py $1/overview_015.json  $1/noncvx_sbmiqp_015.csv
+# python ./benchmark/to_csv.py $1/overview_050.json  $1/noncvx_sbmiqp_050.csv
+# python ./benchmark/to_csv.py $1/overview_100.json  $1/noncvx_sbmiqp_100.csv
+# python ./benchmark/to_csv.py $1/overview_500.json  $1/noncvx_sbmiqp_500.csv
+# python ./benchmark/join_data.py $1/noncvx.csv ./benchmark/nonconvex_set_full.csv $1/noncvx_sbmiqp_010.csv $1/noncvx_sbmiqp_015.csv $1/noncvx_sbmiqp_050.csv $1/noncvx_sbmiqp_100.csv $1/noncvx_sbmiqp_500.csv

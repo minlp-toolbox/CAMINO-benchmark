@@ -8,3 +8,4 @@
 **/SHOT.log
 **/*.egg-info
 env
+**/__pycache__/

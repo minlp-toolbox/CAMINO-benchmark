@@ -34,10 +34,18 @@ for subset in other_csvs:
         for row in cf:
             name = row[1].split(".")[0]
             if name in data:
-                while len(data[name]) < prev_len:
-                    data[name].append("NAN")
-
-                data[name].extend(row[2:])
+                if row[2] == "-inf":
+                    row[3: ] = ["NAN"] * prev_len
+                else:
+                    try:
+                        if data[name][2] == 'max':
+                            if "bonmin" in basename or  "sbmiqp" in basename:
+                                row[2] = str(-1* float(row[2]))
+                                if row[3] != '-inf':
+                                    row[3] = str(-1* float(row[3]))
+                        data[name].extend(row[2:])
+                    except:
+                        data[name].extend(row[2:])
                 while len(data[name]) < new_len:
                     data[name].append("NAN")
 
@@ -47,11 +55,6 @@ with open(csv_out, "w") as f:
     cf.writerow(headers)
     data_len = len(headers)
     for key, sdata in data.items():
-        if sdata[2] == "max":
-            if sdata[3] != "NAN" and sdata[3] != "FAILED":
-                sdata[3] = str(-float(sdata[3]))
-            if sdata[4] != "NAN" and sdata[4] != "FAILED":
-                sdata[4] = str(-float(sdata[4]))
         row = [key] + sdata
         while len(row) < data_len:
             row.append("NAN")
