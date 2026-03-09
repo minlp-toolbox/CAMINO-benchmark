@@ -113,11 +113,13 @@ def to_float(val):
             return np.inf
         else:
             val = float(val)
-            if val > 1e20:
+            if abs(val) > 1e20:
                 return np.inf
             else:
                 return float(val)
     else:
+        if abs(val) > 1e20:
+            return np.inf
         return float(val)
 
 def create_performance_profile(df, solver_columns, ylim=(0, 1), problem_column=None, tau_max=10, num_points=100,
@@ -191,7 +193,7 @@ def create_performance_profile(df, solver_columns, ylim=(0, 1), problem_column=N
         # Handle negative values by transforming to a positive scale while preserving order
         min_value = np.min(values)
         # If all values are negative or mix of negative and positive
-        if min_value < 0:
+        if min_value <= 0:
             # Transform values to ensure the best performance is positive
             transformed_values = values - min_value + 1
             # Find the best (smallest) transformed value
@@ -228,6 +230,7 @@ def create_performance_profile(df, solver_columns, ylim=(0, 1), problem_column=N
         # For each tau value, calculate the fraction of problems where the solver's
         # performance ratio is less than or equal to tau
         profile = [np.sum(perf_ratios[:, j] <= tau) / n_problems for tau in tau_values]
+        print(f"\n {solver=}, {profile[-1]}")
         ax.plot(tau_values, profile, marker='', label=legend_labels[j],
                 color=MCOLORS[j], linestyle=LINESTYLES[j])
 
@@ -289,15 +292,15 @@ if __name__ == "__main__":
     # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
     # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP",]
 
-    solvers = [f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
-    solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
+    # solvers = [f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
+    # solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
 
     # solvers = [f"{key}_sbmiqp_ee_new", f"{key}_sbmiqp_ee",]
     # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
 
     # =================== amplpy comparison ===================
-    # solvers = [f"{key}_bonmin", f"{key}_gurobi", f"{key}_scip", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee"]
-    # solver_names = ["Bonmin", "Gurobi", "SCIP", "SHOT", "S-B-MIQP", "S-B-MIQP-ee",]
+    solvers = [f"{key}_bonmin", f"{key}_gurobi", f"{key}_scip", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee"]
+    solver_names = ["Bonmin", "Gurobi", "SCIP", "SHOT", "S-B-MIQP", "S-B-MIQP-ee",]
 #
     # =================== alpha comparison ===================
     # solvers = [f"{key}_sbmiqp_ee_005", f"{key}_sbmiqp_ee_025", f"{key}_sbmiqp_ee_050", f"{key}_sbmiqp_ee_075", f"{key}_sbmiqp_ee_095",]
@@ -328,10 +331,11 @@ if __name__ == "__main__":
 
     for solver in solvers:
         if "shot" in solver:
-            data[f'{solver}.calc_time'][data[f'{solver}.obj'] == np.inf] = np.inf
+            data.loc[data[f'{solver}.obj'] == np.inf, f'{solver}.calc_time'] = np.inf
         if "gurobi" in solver or "scip" in solver:
             mask = (data[f'{solver}.obj'].abs() > 1e10) | (data[f'{solver}.obj'] == 0)
-            data[f'{solver}.calc_time'][mask] = np.inf
+            data.loc[mask, f'{solver}.calc_time'] = np.inf
+            data.loc[mask, f'{solver}.obj'] = np.inf
     # clipping to 300 preserving inf
     cols = solvers_calctime + ["min.calctime"]
     mask = (data[cols] > 300) & np.isfinite(data[cols])
@@ -348,14 +352,16 @@ if __name__ == "__main__":
 
     for s, ct in zip(solvers, solvers_calctime):
         mask = data[ct] == 300
-        if key == "noncvx" and ("gurobi" in s or "scip" in s):  # in the noncvx case the time-out of scip and gurobi is connected with the time-out of sbmiqp
-            mask = (data[ct] == 300) | (data[ct]>=data[solvers_calctime[2]])
+        # if key == "noncvx" and ("gurobi" in s or "scip" in s):  # in the noncvx case the time-out of scip and gurobi is connected with the time-out of sbmiqp
+        #     breakpoint()
+        #     mask = (data[ct] == 300) | (data[ct]>=data[solvers_calctime[-2]])
         gap  = rel_gap(data['primalbound'], data[f'{s}.obj'])
         failed = data[ct] == np.inf
         print(f'{s}: \t\t success {total_entries-failed.sum()-mask.sum():3d} | fail {failed.sum():2d} | time-out {mask.sum():3d} , gap <1e-1 {(gap[mask]<1e-1).sum():2d}')
 
     if "objsense" in data.columns.tolist():
         data.loc[data["objsense"] == 'max', solvers_obj] = data.loc[data["objsense"] == 'max', solvers_obj] * -1  # adjust the objective of max problems, so that performance profiles are correct
+        data.loc[data.index, solvers_obj] = data.loc[data.index, solvers_obj].replace(-np.inf, np.inf)
 
     # New plots:
     create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=True)
