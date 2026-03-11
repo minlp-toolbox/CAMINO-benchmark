@@ -65,6 +65,8 @@ if len(argv) != 4:
 
 with open(argv[1], "r") as f:
     problems = [key.split(".")[0].split(",")[0] for key in f.readlines()]
+if problems[0] == "name":
+    problems = problems[1:]
 
 base_path = argv[2]
 output_path = argv[3]

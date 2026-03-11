@@ -111,6 +111,8 @@ def to_float(val):
             return np.inf
         elif val == "NAN":
             return np.inf
+        elif val == '0':
+            return np.inf
         else:
             val = float(val)
             if abs(val) > 1e20:
@@ -261,10 +263,11 @@ def create_performance_profile(df, solver_columns, ylim=(0, 1), problem_column=N
 NONCVX_INSTANCES_WITH_CUT_CORRECTION = ['autocorr_bern20-05', 'autocorr_bern20-10', 'autocorr_bern20-15', 'autocorr_bern25-06', 'autocorr_bern25-13', 'autocorr_bern25-19', 'autocorr_bern25-25', 'autocorr_bern30-04', 'autocorr_bern30-08', 'autocorr_bern30-15', 'autocorr_bern30-23', 'autocorr_bern30-30', 'autocorr_bern35-04', 'autocorr_bern35-09', 'autocorr_bern35-18', 'autocorr_bern35-26', 'autocorr_bern35-35fix', 'autocorr_bern40-05', 'autocorr_bern40-10', 'autocorr_bern40-20', 'autocorr_bern40-30', 'autocorr_bern40-40', 'autocorr_bern45-05', 'autocorr_bern45-11', 'autocorr_bern45-23', 'autocorr_bern45-34', 'autocorr_bern45-45', 'autocorr_bern50-06', 'autocorr_bern50-13', 'autocorr_bern50-25', 'autocorr_bern50-38', 'autocorr_bern50-50', 'autocorr_bern55-06', 'autocorr_bern55-14', 'autocorr_bern55-28', 'autocorr_bern55-41', 'autocorr_bern55-55', 'autocorr_bern60-08', 'autocorr_bern60-15', 'autocorr_bern60-30', 'autocorr_bern60-45', 'autocorr_bern60-60', 'batch0812_nc', 'batch_nc', 'casctanks', 'cecil_13', 'chp_shorttermplan1a', 'contvar', 'csched1', 'csched1a', 'csched2', 'csched2a', 'deb10', 'deb6', 'deb7', 'deb8', 'deb9', 'eg_all_s', 'eg_disc2_s', 'eg_disc_s', 'eg_int_s', 'ex1221', 'ex1222', 'ex1224', 'ex1225', 'ex1226', 'ex1233', 'ex1243', 'ex1244', 'ex1252', 'ex1252a', 'ex3pb', 'feedtray', 'fin2bb', 'gastrans', 'gastrans040', 'gastrans135', 'gear4', 'ghg_1veh', 'ghg_2veh', 'ghg_3veh', 'gkocis', 'hadamard_4', 'hadamard_5', 'hadamard_6', 'hadamard_7', 'hadamard_8', 'heatexch_gen1', 'heatexch_spec1', 'heatexch_spec2', 'hybriddynamic_var', 'johnall', 'kan_peaks_h1_n2_g24', 'kan_peaks_h1_n2_g3', 'kan_peaks_h1_n5', 'kan_r3_h1_n3', 'kan_r3_h1_n9', 'kan_r5_h1_n3', 'kan_r5_h1_n5', 'kan_r5_h1_n8', 'kport20', 'kport40', 'lip', 'mbtd', 'multiplants_mtg1a', 'multiplants_mtg1b', 'multiplants_mtg1c', 'multiplants_mtg2', 'multiplants_mtg5', 'multiplants_mtg6', 'multiplants_stg1', 'multiplants_stg1a', 'multiplants_stg1b', 'multiplants_stg1c', 'multiplants_stg5', 'multiplants_stg6', 'nvs01', 'nvs05', 'nvs08', 'nvs21', 'nvs22', 'parallel', 'pooling_epa1', 'pooling_epa2', 'pooling_epa3', 'procsel', 'saa_2', 'sepasequ_complex', 'sepasequ_convent', 'sfacloc1_2_80', 'sfacloc1_2_90', 'sfacloc1_2_95', 'sfacloc1_3_80', 'sfacloc1_3_90', 'sfacloc1_3_95', 'sfacloc1_4_80', 'sfacloc1_4_90', 'sfacloc1_4_95', 'sfacloc2_2_80', 'sfacloc2_2_90', 'sfacloc2_2_95', 'sfacloc2_3_80', 'sfacloc2_3_90', 'sfacloc2_3_95', 'sfacloc2_4_80', 'sfacloc2_4_90', 'sfacloc2_4_95', 'spring', 'st_e15', 'st_e29', 'st_e32', 'st_e36', 'st_e38', 'supplychainp1_020306', 'supplychainp1_022020', 'supplychainp1_030510', 'supplychainr1_020306', 'supplychainr1_022020', 'supplychainr1_030510', 'synheat', 'tanksize', 'transswitch0014p', 'transswitch0030p', 'transswitch0039p', 'transswitch0118p', 'tspn05', 'tspn08', 'tspn10', 'tspn12', 'tspn15', 'unitcommit2', 'var_con10', 'var_con5', 'wastepaper3', 'wastepaper4', 'wastepaper5', 'wastepaper6', 'water4', 'waternd1', 'waternd2', 'waterno2_01', 'waterno2_02', 'waterno2_03', 'waterno2_04', 'waterno2_06', 'waterx', 'windfac']
 if __name__ == "__main__":
 
-    if len(argv) != 4:
-        print("Usage: python create_plot.py <data_file.csv> <key> <solve_time>")
+    if len(argv) != 5:
+        print("Usage: python create_plot.py <data_file.csv> <key> <solve_time> <analysis>")
         print("key: cvx or noncvx")
         print("solve_time: solvetime or totaltime")
+        print("analysis: compare or alpha or rho")
         exit(1)
 
     latexify(6, 4)
@@ -274,6 +277,8 @@ if __name__ == "__main__":
     assert (key == "cvx" or key == "noncvx")
     solve_time = argv[3]
     assert (solve_time == "solvetime" or solve_time == "totaltime")
+    analysis = argv[4]
+    assert (analysis == "compare" or analysis == "alpha" or analysis == "rho")
 
     # =================== standard comparison ===================
     # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
@@ -299,17 +304,30 @@ if __name__ == "__main__":
     # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
 
     # =================== amplpy comparison ===================
-    solvers = [f"{key}_bonmin", f"{key}_gurobi", f"{key}_scip", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee"]
-    solver_names = ["Bonmin", "Gurobi", "SCIP", "SHOT", "S-B-MIQP", "S-B-MIQP-ee",]
-#
+    if analysis == "compare":
+        solvers = [f"{key}_bonmin", f"{key}_gurobi", f"{key}_scip", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee"]
+        solver_names = ["Bonmin", "Gurobi", "SCIP", "SHOT", "S-B-MIQP", "S-B-MIQP-ee",]
+        if key=='cvx':
+            TAU_MAX = (1e5, 1e2)
+            YLIM_LIST = [(0, 1), (0.5, 1)]
+        else:
+            TAU_MAX = (1e5, 1e5)
+            YLIM_LIST = [(0, 1), (0, 1)]
+
     # =================== alpha comparison ===================
-    # solvers = [f"{key}_sbmiqp_ee_005", f"{key}_sbmiqp_ee_025", f"{key}_sbmiqp_ee_050", f"{key}_sbmiqp_ee_075", f"{key}_sbmiqp_ee_095",]
-    # solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
+    if analysis == "alpha":
+        solvers = [f"{key}_sbmiqp_ee_005", f"{key}_sbmiqp_ee_025", f"{key}_sbmiqp_ee_050", f"{key}_sbmiqp_ee_075", f"{key}_sbmiqp_ee_095",]
+        solver_names = [r"$\alpha=0.05$", r"$\alpha=0.25$", r"$\alpha=0.50$", r"$\alpha=0.75$", r"$\alpha=0.95$"]
+        TAU_MAX = (1e3, 1e2)
+        YLIM_LIST = [(0, 1), (0.9, 1)]
 
     # =================== rho comparison ===================
-    # solvers = [f"{key}_sbmiqp_010", f"{key}_sbmiqp_015", f"{key}_sbmiqp_050", f"{key}_sbmiqp_100", f"{key}_sbmiqp_500",]
-    # solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
-    # data = data.loc[data["name"].isin(NONCVX_INSTANCES_WITH_CUT_CORRECTION)]
+    if analysis == "rho":
+        solvers = [f"{key}_sbmiqp_010", f"{key}_sbmiqp_015", f"{key}_sbmiqp_050", f"{key}_sbmiqp_100", f"{key}_sbmiqp_500",]
+        solver_names = [r"$\rho=1$", r"$\rho=1.5$", r"$\rho=5$", r"$\rho=10$", r"$\rho=50$"]
+        data = data.loc[data["name"].isin(NONCVX_INSTANCES_WITH_CUT_CORRECTION)]
+        TAU_MAX = (1e5, 1e5)
+        YLIM_LIST = [(0, 1), (0, 1)]
 
     # ========================== END ==========================
 
@@ -324,7 +342,6 @@ if __name__ == "__main__":
 
     data[solvers_calctime] = data[solvers_calctime].map(to_float)
     data[solvers_obj] = data[solvers_obj].map(to_float)
-    data = data.replace(-np.inf, np.inf)
 
     data['min.calctime'] = np.min(data[solvers_calctime], axis=1)
     data.set_index("name", inplace=True)
@@ -350,21 +367,14 @@ if __name__ == "__main__":
             g[tiny] = 0.0
         return g
 
-    for s, ct in zip(solvers, solvers_calctime):
+    for s, ct, so in zip(solvers, solvers_calctime, solvers_obj):
         mask = data[ct] == 300
-        # if key == "noncvx" and ("gurobi" in s or "scip" in s):  # in the noncvx case the time-out of scip and gurobi is connected with the time-out of sbmiqp
-        #     breakpoint()
-        #     mask = (data[ct] == 300) | (data[ct]>=data[solvers_calctime[-2]])
         gap  = rel_gap(data['primalbound'], data[f'{s}.obj'])
-        failed = data[ct] == np.inf
+        failed = data[so] == np.inf
         print(f'{s}: \t\t success {total_entries-failed.sum()-mask.sum():3d} | fail {failed.sum():2d} | time-out {mask.sum():3d} , gap <1e-1 {(gap[mask]<1e-1).sum():2d}')
 
-    if "objsense" in data.columns.tolist():
-        data.loc[data["objsense"] == 'max', solvers_obj] = data.loc[data["objsense"] == 'max', solvers_obj] * -1  # adjust the objective of max problems, so that performance profiles are correct
-        data.loc[data.index, solvers_obj] = data.loc[data.index, solvers_obj].replace(-np.inf, np.inf)
-
     # New plots:
-    create_performance_profile(data, solvers_calctime, tau_max=1e5, name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=True)
-    create_performance_profile(data, solvers_obj, tau_max=1e5, name=f'{key}_obj_profile_nsol{len(solver_names)}', title="Objective", legend_labels=solver_names, log_scale=True)
+    create_performance_profile(data, solvers_calctime, ylim=YLIM_LIST[0], tau_max=TAU_MAX[0], name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=True)
+    create_performance_profile(data, solvers_obj, ylim=YLIM_LIST[1], tau_max=TAU_MAX[1], name=f'{key}_obj_profile_nsol{len(solver_names)}', title="Objective", legend_labels=solver_names, log_scale=True)
 
     plt.show()
