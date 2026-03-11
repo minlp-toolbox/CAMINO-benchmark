@@ -67,10 +67,12 @@ obj_cols = [col for col in obj_cols if 'sbmiqp' in col or 'sbmiqp_ee' in col or 
 mask_max = df_merged['objsense'] == 'max'
 df_merged.loc[mask_max, obj_cols] *= -1
 
+# Fill nan in cols obj and dualobj with inf
+obj_cols = [col for col in df_merged.columns.tolist() if "obj" in col]
+df_merged[obj_cols] = df_merged[obj_cols].fillna(np.inf)
+
 # 4. Set 'name' as the index
 df_merged = df_merged.set_index('name')
 
 # 5. Save the output
 df_merged.to_csv(csv_out)
-
-breakpoint()
