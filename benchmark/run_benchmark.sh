@@ -3,16 +3,16 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <path_to_file> <path_to_output> <mode>"
+    echo "Usage: $0 <mode> <path_to_file> <path_to_output>"
+    echo "modes: compare, alpha, rho"
     echo "path_to_file: path to the folder with nl instances"
     echo "path_to_output: path to the folder to save the results"
-    echo "Modes: compare, alpha, rho"
     exit 1
 fi
 
-path_to_file=$1
-path_to_output=$2
-mode=$3
+mode=$1
+path_to_file=$2
+path_to_output=$3
 
 mkdir -p $path_to_output
 

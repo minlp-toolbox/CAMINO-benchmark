@@ -3,40 +3,40 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <path_to_output> <mode>"
+    echo "Usage: $0 <mode> <path_to_output>"
     echo "Modes: compare, alpha, rho"
     exit 1
 fi
 
-path_to_output=$1
-mode=$2
-mkdir -p $1
+path_to_output=$2
+mode=$1
+mkdir -p $path_to_output
 
 case "$mode" in
     compare)
         echo "Running comparison mode..."
         # ============================== General Comparison ==============================
-        python ./benchmark/to_csv.py $1/cvx_bonmin/overview.json $1/cvx_bonmin.csv
-        python ./benchmark/to_csv.py $1/cvx_sbmiqp/overview.json $1/cvx_sbmiqp.csv
-        python ./benchmark/to_csv.py $1/cvx_sbmiqp_ee/overview.json $1/cvx_sbmiqp_ee.csv
-        python ./benchmark/to_csv.py $1/cvx_gurobi/overview.json $1/cvx_gurobi.csv
-        python ./benchmark/to_csv.py $1/cvx_scip/overview.json $1/cvx_scip.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_bonmin/overview.json $path_to_output/cvx_bonmin.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp/overview.json $path_to_output/cvx_sbmiqp.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp_ee/overview.json $path_to_output/cvx_sbmiqp_ee.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_gurobi/overview.json $path_to_output/cvx_gurobi.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_scip/overview.json $path_to_output/cvx_scip.csv
 
-        python ./benchmark/to_csv.py $1/noncvx_bonmin/overview.json $1/noncvx_bonmin.csv
-        python ./benchmark/to_csv.py $1/noncvx_sbmiqp/overview.json $1/noncvx_sbmiqp.csv
-        python ./benchmark/to_csv.py $1/noncvx_sbmiqp_ee/overview.json $1/noncvx_sbmiqp_ee.csv
-        python ./benchmark/to_csv.py $1/noncvx_gurobi/overview.json $1/noncvx_gurobi.csv
-        python ./benchmark/to_csv.py $1/noncvx_scip/overview.json $1/noncvx_scip.csv
+        python ./benchmark/to_csv.py $path_to_output/noncvx_bonmin/overview.json $path_to_output/noncvx_bonmin.csv
+        python ./benchmark/to_csv.py $path_to_output/noncvx_sbmiqp/overview.json $path_to_output/noncvx_sbmiqp.csv
+        python ./benchmark/to_csv.py $path_to_output/noncvx_sbmiqp_ee/overview.json $path_to_output/noncvx_sbmiqp_ee.csv
+        python ./benchmark/to_csv.py $path_to_output/noncvx_gurobi/overview.json $path_to_output/noncvx_gurobi.csv
+        python ./benchmark/to_csv.py $path_to_output/noncvx_scip/overview.json $path_to_output/noncvx_scip.csv
 
-        python ./benchmark/read_shot.py ./benchmark/convex_set_full.csv $1/cvx_shot $1/cvx_shot.csv
-        python ./benchmark/read_shot.py ./benchmark/nonconvex_set_full.csv $1/noncvx_shot $1/noncvx_shot.csv
+        python ./benchmark/read_shot.py ./benchmark/convex_set_full.csv $path_to_output/cvx_shot $path_to_output/cvx_shot.csv
+        python ./benchmark/read_shot.py ./benchmark/nonconvex_set_full.csv $path_to_output/noncvx_shot $path_to_output/noncvx_shot.csv
 
-        python ./benchmark/join_csv_using_pandas.py $1/cvx.csv ./benchmark/convex_set_full.csv $1/cvx_bonmin.csv $1/cvx_sbmiqp.csv $1/cvx_sbmiqp_ee.csv  $1/cvx_shot.csv $1/cvx_gurobi.csv $1/cvx_scip.csv
-        python ./benchmark/join_csv_using_pandas.py $1/noncvx.csv ./benchmark/nonconvex_set_full.csv $1/noncvx_bonmin.csv $1/noncvx_sbmiqp.csv $1/noncvx_sbmiqp_ee.csv  $1/noncvx_shot.csv $1/noncvx_gurobi.csv $1/noncvx_scip.csv
-        python ./benchmark/to_csv.py $1/cvx_sbmiqp/overview.json $1/cvx_sbmiqp.csv
-        python ./benchmark/to_csv.py $1/cvx_sbmiqp_new/overview.json $1/cvx_sbmiqp_new.csv
-        python ./benchmark/join_csv_using_pandas.py $1/cvx.csv ./benchmark/convex_set.csv $1/cvx_sbmiqp.csv $1/cvx_sbmiqp_new.csv $1/cvx_sbmiqp_ee.csv $1/cvx_sbmiqp_ee_new.csv
-        python ./benchmark/join_csv_using_pandas.py $1/noncvx.csv ./benchmark/nonconvex_set.csv $1/noncvx_sbmiqp.csv $1/noncvx_sbmiqp_new.csv $1/noncvx_sbmiqp_ee.csv $1/noncvx_sbmiqp_ee_new.csv
+        python ./benchmark/join_csv_using_pandas.py $path_to_output/cvx.csv ./benchmark/convex_set_full.csv $path_to_output/cvx_bonmin.csv $path_to_output/cvx_sbmiqp.csv $path_to_output/cvx_sbmiqp_ee.csv  $path_to_output/cvx_shot.csv $path_to_output/cvx_gurobi.csv $path_to_output/cvx_scip.csv
+        python ./benchmark/join_csv_using_pandas.py $path_to_output/noncvx.csv ./benchmark/nonconvex_set_full.csv $path_to_output/noncvx_bonmin.csv $path_to_output/noncvx_sbmiqp.csv $path_to_output/noncvx_sbmiqp_ee.csv  $path_to_output/noncvx_shot.csv $path_to_output/noncvx_gurobi.csv $path_to_output/noncvx_scip.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp/overview.json $path_to_output/cvx_sbmiqp.csv
+        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp_new/overview.json $path_to_output/cvx_sbmiqp_new.csv
+        python ./benchmark/join_csv_using_pandas.py $path_to_output/cvx.csv ./benchmark/convex_set.csv $path_to_output/cvx_sbmiqp.csv $path_to_output/cvx_sbmiqp_new.csv $path_to_output/cvx_sbmiqp_ee.csv $path_to_output/cvx_sbmiqp_ee_new.csv
+        python ./benchmark/join_csv_using_pandas.py $path_to_output/noncvx.csv ./benchmark/nonconvex_set.csv $path_to_output/noncvx_sbmiqp.csv $path_to_output/noncvx_sbmiqp_new.csv $path_to_output/noncvx_sbmiqp_ee.csv $path_to_output/noncvx_sbmiqp_ee_new.csv
         ;;
     alpha)
         # ============================== Combine files for comparing sbmiqp versions ==============================
