@@ -22,7 +22,7 @@ def to_float(val):
         return float(val)
 
 
-data_df = pd.read_csv("results/26_03_06/noncvx_sbmiqp.csv")
+data_df = pd.read_csv("results/26_03_10_results/noncvx_sbmiqp.csv")
 
 data_df['obj'].map(to_float)
 mask = abs(data_df.obj)==np.inf
@@ -31,3 +31,4 @@ data_df = (data_df[~mask]).copy(deep=True)
 tmp = data_df['path'].tolist()
 names = [word.split('.')[0] for word in tmp]
 print(names)
+print(f"{len(names)=}")

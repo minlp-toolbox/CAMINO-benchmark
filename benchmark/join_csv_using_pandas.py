@@ -26,7 +26,7 @@ for f in other_csvs:
 
         # --- Fix columns for failed rows ---
         # Identify rows where 'obj' is -inf
-        is_failed = df_current['obj'] == float('-inf')
+        is_failed = (df_current['obj'] == float('-inf')) | (df_current['obj'] == 'NAN') | (df_current['obj'] == 'FAILED')
 
         if is_failed.any():
             # Set 'obj' to inf for these rows
