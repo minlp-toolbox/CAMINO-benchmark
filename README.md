@@ -36,14 +36,14 @@ Computations run on a single thread, with time limit set to 5 minutes.\
 These results correspond to the one found in the folder `results/08_08_results`.
 #### Convex instances
 <p float="left">
-  <img src="results/26_03_10/03-12_cvx_obj_profile_nsol6.png" width="400" />
-  <img src="results/26_03_10/03-12_cvx_calc_time_profile_nsol6_totaltime.png" width="400" />
+  <img src="results/26_03_10_results/03-12_cvx_obj_profile_nsol6.png" width="400" />
+  <img src="results/26_03_10_results/03-12_cvx_calc_time_profile_nsol6_totaltime.png" width="400" />
 </p>
 
 #### Nonconvex instances
 <p float="left">
-  <img src="results/26_03_10/03-12_noncvx_obj_profile_nsol6.png" width="400" />
-  <img src="results/26_03_10/03-12_noncvx_calc_time_profile_nsol6_totaltime.png" width="400" />
+  <img src="results/26_03_10_results/03-12_noncvx_obj_profile_nsol6.png" width="400" />
+  <img src="results/26_03_10_results/03-12_noncvx_calc_time_profile_nsol6_totaltime.png" width="400" />
 </p>
 
 ## Problem instances
