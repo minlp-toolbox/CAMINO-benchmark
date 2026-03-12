@@ -372,7 +372,7 @@ if __name__ == "__main__":
         gap  = rel_gap(data['primalbound'], data[f'{s}.obj'])
         failed = data[so] == np.inf
         print(f'{s}: \t\t success {total_entries-failed.sum()-mask.sum():3d} | fail {failed.sum():2d} | time-out {mask.sum():3d} , gap <1e-1 {(gap[mask]<1e-1).sum():2d}')
-        breakpoint()
+
     # New plots:
     create_performance_profile(data, solvers_calctime, ylim=YLIM_LIST[0], tau_max=TAU_MAX[0], name=f'{key}_calc_time_profile_nsol{len(solver_names)}_{solve_time}', title="Wall time", legend_labels=solver_names, log_scale=True)
     create_performance_profile(data, solvers_obj, ylim=YLIM_LIST[1], tau_max=TAU_MAX[1], name=f'{key}_obj_profile_nsol{len(solver_names)}', title="Objective", legend_labels=solver_names, log_scale=True)
