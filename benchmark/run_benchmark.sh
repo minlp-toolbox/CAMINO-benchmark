@@ -2,7 +2,7 @@
 # Copyright (C) 2025  Andrea Ghezzi, Wim Van Roy, Sebastian Sager, Moritz Diehl
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3]; then
     echo "Usage: $0 <mode> <path_to_file> <path_to_output>"
     echo "modes: compare, alpha, rho"
     echo "path_to_file: path to the folder with nl instances"

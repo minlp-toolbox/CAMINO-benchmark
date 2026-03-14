@@ -33,10 +33,6 @@ case "$mode" in
 
         python ./benchmark/join_csv_using_pandas.py $path_to_output/cvx.csv ./benchmark/convex_set_full.csv $path_to_output/cvx_bonmin.csv $path_to_output/cvx_sbmiqp.csv $path_to_output/cvx_sbmiqp_ee.csv  $path_to_output/cvx_shot.csv $path_to_output/cvx_gurobi.csv $path_to_output/cvx_scip.csv
         python ./benchmark/join_csv_using_pandas.py $path_to_output/noncvx.csv ./benchmark/nonconvex_set_full.csv $path_to_output/noncvx_bonmin.csv $path_to_output/noncvx_sbmiqp.csv $path_to_output/noncvx_sbmiqp_ee.csv  $path_to_output/noncvx_shot.csv $path_to_output/noncvx_gurobi.csv $path_to_output/noncvx_scip.csv
-        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp/overview.json $path_to_output/cvx_sbmiqp.csv
-        python ./benchmark/to_csv.py $path_to_output/cvx_sbmiqp_new/overview.json $path_to_output/cvx_sbmiqp_new.csv
-        python ./benchmark/join_csv_using_pandas.py $path_to_output/cvx.csv ./benchmark/convex_set.csv $path_to_output/cvx_sbmiqp.csv $path_to_output/cvx_sbmiqp_new.csv $path_to_output/cvx_sbmiqp_ee.csv $path_to_output/cvx_sbmiqp_ee_new.csv
-        python ./benchmark/join_csv_using_pandas.py $path_to_output/noncvx.csv ./benchmark/nonconvex_set.csv $path_to_output/noncvx_sbmiqp.csv $path_to_output/noncvx_sbmiqp_new.csv $path_to_output/noncvx_sbmiqp_ee.csv $path_to_output/noncvx_sbmiqp_ee_new.csv
         ;;
     alpha)
         # ============================== Combine files for comparing sbmiqp versions ==============================

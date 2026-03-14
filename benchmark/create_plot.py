@@ -256,7 +256,7 @@ def create_performance_profile(df, solver_columns, ylim=(0, 1), problem_column=N
     ax.set_title(title)
     fig.subplots_adjust(left=0.16, bottom=0.17, top=0.9)
     # plt.tight_layout()
-    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.pdf", dpi=300, bbox_inches='tight', pad_inches=0.05,)
+    plt.savefig(f"{SAVE_DIRECTORY}/{datetime.now().strftime('%m-%d')}_{name}.png", dpi=300, bbox_inches='tight', pad_inches=0.05,)
 
     return fig, ax
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
         print("Usage: python create_plot.py <data_file.csv> <key> <solve_time> <analysis>")
         print("key: cvx or noncvx")
         print("solve_time: solvetime or totaltime")
-        print("analysis: compare or alpha or rho")
+        print("analysis: compare or alpha or rho or custom")
         exit(1)
 
     latexify(6, 4)
@@ -278,30 +278,33 @@ if __name__ == "__main__":
     solve_time = argv[3]
     assert (solve_time == "solvetime" or solve_time == "totaltime")
     analysis = argv[4]
-    assert (analysis == "compare" or analysis == "alpha" or analysis == "rho")
+    assert (analysis == "compare" or analysis == "alpha" or analysis == "rho" or analysis=="custom")
 
-    # =================== standard comparison ===================
-    # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
-    # solver_names = ["SHOT", "S-B-MIQP"]
+    if analysis == "custom":
+        # =================== standard comparison ===================
+        # solvers = [f"{key}_shot", f"{key}_sbmiqp"]
+        # solver_names = ["SHOT", "S-B-MIQP"]
 
-    # solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
-    # solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
+        # solvers = [f"{key}_bonmin", f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_ee",]
+        # solver_names = ["Bonmin", "SHOT", "S-B-MIQP", "S-B-MIQP-ee"]
 
-    # =================== v0.1.4 - v.0.1.5 comparison ===================
-    # solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
-    # solver_names = ["SHOT", "S-B-MIQP", "S-B-MIQP-new", "S-B-MIQP-ee", "S-B-MIQP-ee-new",]
+        # =================== v0.1.4 - v.0.1.5 comparison ===================
+        # solvers = [ f"{key}_shot", f"{key}_sbmiqp", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee", f"{key}_sbmiqp_ee_new",]
+        # solver_names = ["SHOT", "S-B-MIQP", "S-B-MIQP-new", "S-B-MIQP-ee", "S-B-MIQP-ee-new",]
 
-    # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee_new",]
-    # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP-ee-new",]
+        # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp_ee_new",]
+        # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP-ee-new",]
 
-    # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
-    # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP",]
+        # solvers = [f"{key}_shot", f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
+        # solver_names = ["SHOT", "S-B-MIQP-new", "S-B-MIQP",]
 
-    # solvers = [f"{key}_sbmiqp_new", f"{key}_sbmiqp",]
-    # solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
+        solvers = [f"{key}_new", f"{key}_old",]
+        solver_names = ["S-B-MIQP-new", "S-B-MIQP",]
+        TAU_MAX = (1e2, 1e2)
+        YLIM_LIST = [(0, 1), (0, 1)]
 
-    # solvers = [f"{key}_sbmiqp_ee_new", f"{key}_sbmiqp_ee",]
-    # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
+        # solvers = [f"{key}_sbmiqp_ee_new", f"{key}_sbmiqp_ee",]
+        # solver_names = ["S-B-MIQP-ee-new", "S-B-MIQP-ee",]
 
     # =================== amplpy comparison ===================
     if analysis == "compare":
