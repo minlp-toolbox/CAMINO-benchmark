@@ -33,17 +33,18 @@ python benchmark/create_plot.py <path_to_save_results>/noncvx.csv noncvx <solve_
 ### Results
 On our machine (with Intel(R) Xeon(R) W-2225 CPU @ 4.10GHz and 32GB of memory), we have obtained the following performance profiles.
 Computations run on a single thread, with time limit set to 5 minutes.\
-These results correspond to the one found in the folder `results/08_08_results`.
+These results correspond to the one found in the folder `results/26_03_10_results`.\
+Note that for nonconvex MINLPs, SCIP and Gurobi have a time limited to the time taken by S-B-MIQP on the same problem. In a sense, we are treating every algorithm as a primal heuristic.
 #### Convex instances
 <p float="left">
-  <img src="results/26_03_10/03-12_cvx_obj_profile_nsol6.png" width="400" />
-  <img src="results/26_03_10/03-12_cvx_calc_time_profile_nsol6_totaltime.png" width="400" />
+  <img src="results/26_03_10_results/03-12_cvx_obj_profile_nsol6.png" width="400" />
+  <img src="results/26_03_10_results/03-12_cvx_calc_time_profile_nsol6_totaltime.png" width="400" />
 </p>
 
 #### Nonconvex instances
 <p float="left">
-  <img src="results/26_03_10/03-12_noncvx_obj_profile_nsol6.png" width="400" />
-  <img src="results/26_03_10/03-12_noncvx_calc_time_profile_nsol6_totaltime.png" width="400" />
+  <img src="results/26_03_10_results/03-12_noncvx_obj_profile_nsol6.png" width="400" />
+  <img src="results/26_03_10_results/03-12_noncvx_calc_time_profile_nsol6_totaltime.png" width="400" />
 </p>
 
 ## Problem instances
