@@ -9,11 +9,11 @@ from sys import argv
 
 RESULT_DIR = os.path.dirname(argv[1])
 key = argv[2]
-assert (key == "cvx" or key == "noncvx")
+assert key == "cvx" or key == "noncvx"
 
-with open(argv[1], 'r') as file:
+with open(argv[1], "r") as file:
     data = json.load(file)
-    data = data['data']
+    data = data["data"]
 
 dimension_success_problem = len(data[0])
 problems_with_cut_correction = []
