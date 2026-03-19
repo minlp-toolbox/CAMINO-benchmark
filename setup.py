@@ -20,7 +20,6 @@ setup(
         "caminopy>=0.1.2",
         "lxml>=5.4.0",
     ],
-
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
@@ -34,5 +33,5 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.14",
-    ]
+    ],
 )
