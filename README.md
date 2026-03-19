@@ -30,6 +30,8 @@ python -m amplpy.modules install scip gurobi
 ```
 For using Gurobi, you need a license and you might need to specify it via `python -m amplpy.modules activate <license-uuid>`
 
+**Note** SCIP and Gurobi used via AMPLpy read .mod files, so you need to download https://www.minlplib.org/minlplib_mod.zip
+
 
 
 Finally, the scipt `combine_files.sh` merges the results into a single csv file, then a python script called `create_plot.py` creates the figures with the performance profiles.
