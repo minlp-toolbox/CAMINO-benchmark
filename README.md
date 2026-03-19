@@ -16,7 +16,23 @@ pip install .
 `pip install .` will install the `caminopy` package containing the [CAMINO](https://github.com/minlp-toolbox/CAMINO) solvers.
 CAMINO relies on CasADi to interface NLP and MIP solvers such as Ipopt, Highs, Gurobi. **To make your Gurobi installation visible to CasADi** follow this [instructions](https://github.com/casadi/casadi/wiki/FAQ:-how-to-get-third-party-solvers-to-work%3F).
 
-We provide a shell script to easily run and store the results showed in our preprint, checkout `run_benchmark.sh`. Another script called `combine_files.sh` merges the results into a single csv file, then a python script called `create_plot.py` creates the figures with the performance profiles.
+
+We provide a shell script to easily run and store the results showed in our preprint, checkout `run_benchmark.sh`.
+
+
+**SCIP and Gurobi (for MINLPs)** are called via AMPLpy.\
+We provide a shell script `run_benchmark_ampl.sh` to execute the benchmark with these solvers.
+To use AMPLpy install it via PyPi using the same Python environment
+```
+python -m pip install amplpy --upgrade
+# Install solver modules -- SCIP and Gurobi
+python -m amplpy.modules install scip gurobi
+```
+For using Gurobi, you need a license and you might need to specify it via `python -m amplpy.modules activate <license-uuid>`
+
+
+
+Finally, the scipt `combine_files.sh` merges the results into a single csv file, then a python script called `create_plot.py` creates the figures with the performance profiles.
 In your shell execute the following
 ```
 ./benchmark/run_benchmark.sh compare <path_to_dir_with_minlplib_nl_files> <path_to_save_results>
